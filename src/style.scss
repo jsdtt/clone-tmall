@@ -1,0 +1,141 @@
+$min-width: 990px;
+$sn-height: 32px;
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+em, i {font-style: normal;}
+a {
+  text-decoration: none;
+  color: #000;
+  outline: 0;
+}
+li, ol, ul {list-style: none;}
+
+#mallPage, #site-nav{
+  width: auto;
+  min-width: $min-width;
+}
+#site-nav {
+  font-family: "Microsoft YaHei",tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
+  font-size: 10px;
+}
+
+#site-nav {
+  background-color: #f2f2f2;
+  height: $sn-height;
+  position: relative !important;
+  border-bottom: 1px solid #e5e5e5;
+  a {
+    color: #999;
+    &:link {
+      color: #999;
+    }
+    &:hover {
+      color: #c40000;
+    }
+  }
+  color: #999;
+}
+#sn-bd {
+  position: relative;
+  width: 982px;
+  margin: auto;
+  .sn-container {
+    line-height: $sn-height;
+    display: inline-block;
+    &::after {
+      display: table;
+      content: '';
+      clear: both;
+    }
+    .sn-login, .sn-register {
+      margin: 0 10px;
+    }
+    .sn-login {
+      margin-left: 20px;
+    }
+  }
+  .sn-quick-menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: $sn-height;
+    line-height: $sn-height;
+    li {
+      float: left;
+      position: relative;
+      margin-right: 10px;
+    }
+
+    .menu-hd {
+      display: block;
+      padding: 0 10px;
+      padding-right: 14px;
+      z-index: 10000;
+      b {
+        position: absolute;
+        top: 15px;
+        right: 3px;
+        width: 0;
+        height: 0;
+        border-width: 3px;
+        border-style: solid dashed dashed;
+        border-color: #bbb transparent transparent;
+        font-size: 0;
+        line-height: 0;
+        transition: transform .2s ease-in;
+        transform-origin: 50% 30%;
+      }
+      &:hover {
+        ~.menu-bd {
+          display: block;
+        }
+      }
+    }
+    .menu-bd {
+      width: 74px;
+      display: none;
+      position: absolute;
+      z-index: 999;
+      left: -1px;
+      top: 33px;
+      padding: 8px 10px;
+      line-height: 1.4;
+      background: #fff;
+      border: solid #eee;
+      border-width: 0 1px 1px;
+      a {
+        line-height: 20px;
+        display: block;
+      }
+      &:hover {
+        display: block;
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .sn-favority {
+      border-right: 1px solid #ccc;
+      #myFavorityPanel {
+        width: 62px;
+
+      }
+    }
+  }
+}
+
+.hover {
+  border-bottom: 1px solid;
+  border-color: #fff;
+  background-color: #fff;
+  text-decoration: underline;
+  >b {
+    transform: rotate(180deg);
+  }
+  color: #c40000 !important;
+  text-decoration: underline;
+}
