@@ -1,51 +1,34 @@
 window.onload = function() {
-  addHover()
+  showPanel()
 }
 
-function addHover() {
-  let mytb = document.getElementById('myTaobao')
-  let myTaobaoPanel = document.getElementById('menubd'),
-      myFavority = document.getElementById('myFavority'),
-      myFavorityPanel = document.getElementById('myFavorityPanel'),
-      seller = document.getElementById('seller'),
-      sellerPanel = document.getElementById('sellerPanel')
-  let onPlam = false
-  mytb.addEventListener('mouseover', function() {
-    mytb.className = "menu-hd hover"
-  })
-  myTaobaoPanel.addEventListener('mouseover', function() {
-    mytb.className = "menu-hd hover"
-  })
-  myTaobaoPanel.addEventListener('mouseout', function() {
-    mytb.className = "menu-hd";
-  })
-  mytb.addEventListener('mouseout', function() {
-    mytb.className = "menu-hd";
-  })
+function showPanel() {
+  const topNavList = document.getElementById('top-nav-list')
+  let currentMenu, menuPanel
+  topNavList.addEventListener('mouseover', function(e){
+    isShow(e, 'mouseover')
+  }, false)
+  topNavList.addEventListener('mouseout', function(e){
+    isShow(e, 'mouseout')
+  }, false)
+  //通过事件代理实现菜单的显示
+  function isShow (e, flag){
+    if (e.target) {
+      const targetClass = e.target.className.toUpperCase(),
+            targetName = e.target.nodeName.toUpperCase()
+      if (flag === 'mouseover') {
+        if (targetClass === 'MENU-HD' && targetName === 'A') {
+          e.target.className = "menu-hd hover"
+          currentMenu = e.target
+          menuPanel = currentMenu.nextElementSibling
+        }
+      }
+      else {
+        if ((menuPanel && window.getComputedStyle(menuPanel, null).display === 'none')) {
+          currentMenu.className = "menu-hd"
+        }
+      }
+    }
 
-  myFavority.addEventListener('mouseover', function() {
-    myFavority.className = "menu-hd hover"
-  })
-  myFavorityPanel.addEventListener('mouseover', function() {
-    myFavority.className = "menu-hd hover"
-  })
-  myFavorityPanel.addEventListener('mouseout', function() {
-    myFavority.className = "menu-hd";
-  })
-  myFavority.addEventListener('mouseout', function() {
-    myFavority.className = "menu-hd";
-  })
-
-  seller.addEventListener('mouseover', function() {
-    seller.className = "menu-hd hover"
-  })
-  sellerPanel.addEventListener('mouseover', function() {
-    seller.className = "menu-hd hover"
-  })
-  sellerPanel.addEventListener('mouseout', function() {
-    seller.className = "menu-hd";
-  })
-  seller.addEventListener('mouseout', function() {
-    seller.className = "menu-hd";
-  })
+  }
 }
