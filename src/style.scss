@@ -29,6 +29,7 @@ li, ol, ul {list-style: none;}
   position: relative !important;
   border-bottom: 1px solid #e5e5e5;
   a {
+    cursor: pointer;
     color: #999;
     &:link {
       color: #999;
@@ -67,7 +68,10 @@ li, ol, ul {list-style: none;}
     li {
       float: left;
       position: relative;
-      margin-right: 10px;
+      margin-right: 15px;
+      &:nth-last-child(1) {
+        margin-right: 0;
+      }
     }
 
     .menu-hd {
@@ -119,10 +123,140 @@ li, ol, ul {list-style: none;}
       }
     }
     .sn-favority {
-      border-right: 1px solid #ccc;
       #myFavorityPanel {
         width: 62px;
-
+      }
+    }
+    .sn-separator {
+      width: 0;
+      height: 14px;
+      line-height: 14px;
+      border-right: 1px solid #ccc;
+      top: 9px;
+    }
+    .sn-mobile:hover {
+      .sn-qrcode {
+        display: block;
+      }
+    }
+    .sn-qrcode {
+      display: none;
+      width: 175px;
+      height: 227px;
+      position: absolute;
+      top: 26px;
+      left: -48px;
+      box-shadow: 0 0 5px #aaa;
+      background-color: #fff;
+      &-content {
+        width: 175px;
+        height: 175px;
+        margin: 5px 0 0;
+        background: url(https://img.alicdn.com/tps/i4/TB1K4a8IpXXXXaRXFXXbNxvWXXX-175-215.png) 0 0 no-repeat;
+      }
+      p {
+        background: url(https://img.alicdn.com/tps/TB1sR93OFXXXXaAXXXXXXXXXXXX-145-30.png) center bottom no-repeat;
+        margin: 0 15px;
+        text-indent: -999px;
+        overflow: hidden;
+        line-height: 32px;
+      }
+      b {
+        width: 0;
+        border-width: 5px;
+        border-style: dashed dashed solid ;
+        border-color: transparent transparent #fff ;
+        position: absolute;
+        font-size: 0;
+        left: 50%;
+        top: -10px;
+        margin-left: -10px;
+      }
+    }
+    .sn-seller {
+      .menu-bd {
+        width: 122px;
+        overflow: hidden;
+        right: 0;
+        left: auto;
+        a:nth-child(even) {
+          margin-right: 20px;
+        }
+        li {
+          margin-right: 0;
+        }
+        a {
+          width: 48px;
+          line-height: 22px;
+          display: inline-block;
+        }
+      }
+    }
+    .site-list {
+      li {
+        width: 95px;
+        padding: 6px 0;
+        overflow: hidden;
+        margin-right: 0;
+      }
+    }
+    .sn-sitemap {
+      ul {
+        overflow: hidden;
+        margin-right: -20px;
+      }
+      .menu-bd {
+        width: 982px;
+        right: 0;
+        left: auto;
+        box-sizing: border-box;
+      }
+      .site-cont {
+        height: 200px;
+        padding-left: 30px;
+        overflow: hidden;
+        float: left;
+        h2 {
+          font-size: 16px;
+          padding-bottom: 8px;
+          span {
+            padding-left: 10px;
+          }
+        }
+      }
+      .site-hot {
+        width: 275px;
+        color: #f56a00;
+      }
+      .site-market {
+        width: 375px;
+        border-left: 1px solid #f5f5f5;
+        border-right: 1px solid #f5f5f5;
+        color: #2263d4;
+      }
+      .site-help {
+        width: 210px;
+      }
+      .site-brand {
+        width: 275px;
+        color: pink;
+        border-right: 1px solid #f5f5f5;
+      }
+      .sn-sitemap-icon {
+        background: url(https://img.alicdn.com/tps/i1/TB1gyXLGFXXXXceXVXXCEcU6VXX-439-220.png) -9999px -9999px no-repeat;
+        position: absolute;
+        width: 9px;
+        height: 11px;
+        overflow: hidden;
+        line-height: 0;
+        font-size: 0;
+        top:-.2px;
+      }
+      .sn-sitemap-icon-new {
+        background-position: -37px -11px;
+      }
+      .sn-sitemap-icon-hot {
+        background-position: -37px 0;
       }
     }
   }
