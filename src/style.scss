@@ -14,6 +14,10 @@ a {
 }
 li, ol, ul {list-style: none;}
 
+img {
+  vertical-align: middle;
+}
+
 #mallPage, #site-nav{
   width: auto;
   min-width: $min-width;
@@ -296,6 +300,7 @@ li, ol, ul {list-style: none;}
     overflow: hidden;
   }
 }
+// Old LOGO
 #mallLogo {
   width: 280px;
   height: 64px;
@@ -305,6 +310,7 @@ li, ol, ul {list-style: none;}
   z-index: 9;
   padding-top: 28px;
   .mlogo {
+    display: none;
     float: left;
     margin-right: 10px;
     padding: 0;
@@ -475,6 +481,208 @@ li, ol, ul {list-style: none;}
     top: 0;
     transition: all .2s ;
     transform: translate(-20px,-5px);
+  }
+}
+
+.category-con {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  .category-inner-con {
+    width: 982px;
+    position: relative;
+    z-index: 100;
+    margin-right: 0;
+    margin: 0 auto;
+  }
+  .logo-cn {
+    position: absolute;
+    width: 290px;
+    height: 130px;
+    z-index: 100000;
+    margin-top: -166px;
+    margin-left: -25px;
+    img {
+      width: 240px;
+      height: 130px;
+    }
+  }
+  .category-type {
+    width: 200px;
+    height: 36px;
+    background-color: #C60A0A;
+    color: #fff;
+    position: absolute;
+    top: -36px;
+    line-height: 36px;
+    i {
+      margin-left: 24px;
+      width: 10px;
+    }
+    .text {
+      display: inline-block;
+      font-size: 16px;
+      margin-left: 14px;
+    }
+  }
+  .category-type-content {
+
+  }
+  // 左侧导航栏
+  .nva-con {
+    width: 200px;
+    .normal-nva {
+      height: 500px;
+      background-color: rgba(238,238,238,.95);
+      position: relative;
+      z-index: 11;
+      * {
+        box-sizing: border-box;
+      }
+    }
+    .nva-item{
+      height: 31.2px;
+      position: relative;
+      line-height: 31.2px;
+      color: #000;
+      font-size: 14px;
+      &:hover {
+        background-color: #fff;
+        .nav-item-icon, a {
+          opacity: 1;
+        }
+        a {
+          color: pink !important;
+        }
+      }
+      .nav-item-icon {
+        display: inline-block;
+        height: 31px;
+        margin-left: 14px;
+        margin-right: 4px;
+        line-height: 31px;
+        font-size: 16px;
+        opacity: .5;
+      }
+      a {
+        cursor: pointer;
+        height: 31px;
+        font-size: 14px;
+        opacity: .8;
+      }
+    }
+  }
+  // 导航栏hover时右边显示的菜单
+  .content-con {
+    height: 500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    // 默认不可见,通过JS交互显示
+    .pannel-con {
+      display: none;
+      position: absolute;
+      left: 200px;
+      height: 500px;
+      background-color: #fff;
+      width: 782px;
+      .hot-word-con {
+        float: left;
+        margin: 19px 30px;
+        height: 462px;
+        width: 511px;
+        overflow: hidden;
+        background-color: #fff;
+        .line-title {
+          width: 60px;
+          color: #333;
+          margin-right: 30px;
+          font-size: 14px;
+          position: relative;
+          font-weight: 700;
+          line-height: 22px;
+          height: 22px;
+          float: left;
+          .title-text {
+            width: 60px;
+            overflow: hidden;
+            display: inline-block;
+            text-align: justify;
+            text-align-last: justify;
+            // 可能是为了填补下面的空档，防止右边的内容渗入
+            &::after {
+              content: "";
+              width: 100%;
+              display: inline-block;
+            }
+          }
+          i {
+            display: block;
+            position: absolute;
+            top: 0;
+            width: 14px;
+            right: -17px;
+            padding-top: .5px;
+          }
+        }
+        .line-con {
+          width: 418px;
+          float: left;
+          .hot-word {
+            height: 22px;
+            line-height: 22px;
+            font-size: 14px;
+            float: left;
+            margin-left: 13px;
+            color: #666;
+            cursor: pointer;
+          }
+          .highlight {
+            color: #e54077!important;
+          }
+          .seprate {
+            margin-bottom: 10.5px;
+            border-bottom: 1px dashed rgba(0,0,0,.1);
+            height: 10.5px;
+            clear: both;
+          }
+        }
+      }
+      .sub-log-con {
+        float: left;
+        padding: 10px;
+        width: 189px;
+        height: 480px;
+        background-color: #FAFAFA;
+        .logo {
+          width: 73px;
+          height: 37px;
+          margin-right: 1px;
+          margin-bottom: 1px;
+          padding: 5px 10px;
+          overflow: hidden;
+          float: left;
+          background-color: #fff;
+          img {
+            width: 73px;
+            margin: 0 auto;
+            display: block;
+          }
+        }
+        .activity {
+          display: block;
+          clear: both;
+          border-top: 10px solid #fafafa;
+          background-color: #fff;
+          img {
+            float: left;
+            width: 189px;
+            height: 87px;
+          }
+        }
+      }
+    }
   }
 }
 
