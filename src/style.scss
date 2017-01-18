@@ -1,6 +1,6 @@
 $min-width: 990px;
 $sn-height: 32px;
-
+$main-color: #c40000;
 
 * {
   margin: 0;
@@ -35,7 +35,7 @@ li, ol, ul {list-style: none;}
       color: #999;
     }
     &:hover {
-      color: #c40000;
+      color: $main-color;
     }
   }
   color: #999;
@@ -59,6 +59,7 @@ li, ol, ul {list-style: none;}
       margin-left: 20px;
     }
   }
+  //顶部导航拦右边一系列菜单
   .sn-quick-menu {
     position: absolute;
     top: 0;
@@ -79,12 +80,14 @@ li, ol, ul {list-style: none;}
       padding: 0 10px;
       padding-right: 14px;
       z-index: 10000;
+      // 通过border绘制小三角形
       b {
         position: absolute;
         top: 15px;
         right: 3px;
         width: 0;
         height: 0;
+        // ====import====
         border-width: 3px;
         border-style: solid dashed dashed;
         border-color: #bbb transparent transparent;
@@ -92,6 +95,7 @@ li, ol, ul {list-style: none;}
         line-height: 0;
         transition: transform .2s ease-in;
         transform-origin: 50% 30%;
+        // ==============
       }
       &:hover {
         ~.menu-bd {
@@ -102,8 +106,9 @@ li, ol, ul {list-style: none;}
     .menu-bd {
       width: 74px;
       display: none;
+      // 前面li为相对定位，所以菜单绝对定位时会以li为基准
       position: absolute;
-      z-index: 999;
+      z-index: 99999;
       left: -1px;
       top: 33px;
       padding: 8px 10px;
@@ -137,6 +142,7 @@ li, ol, ul {list-style: none;}
     .sn-mobile:hover {
       .sn-qrcode {
         display: block;
+        z-index: 99999;
       }
     }
     .sn-qrcode {
@@ -207,6 +213,7 @@ li, ol, ul {list-style: none;}
       }
       .menu-bd {
         width: 982px;
+        // 绝对定位后right为0则右边不动，左边auto自适应
         right: 0;
         left: auto;
         box-sizing: border-box;
@@ -253,6 +260,7 @@ li, ol, ul {list-style: none;}
         top:-.2px;
       }
       .sn-sitemap-icon-new {
+        // 雪碧图
         background-position: -37px -11px;
       }
       .sn-sitemap-icon-hot {
@@ -261,7 +269,163 @@ li, ol, ul {list-style: none;}
     }
   }
 }
+#header {
+  height: 100px;
+  margin-top: 0 !important;
+  width: auto;
+  z-index: 1000;
+  position: relative;
+  .headerLayout {
+    width: 982px;
+    height: 100px;
+    margin: 0 auto;
+  }
+  .headerCon {
+    &::before, &::after {
+      display: table;
+      content: "";
+      overflow: hidden;
+    }
+    &::after {
+      clear: both;
+    }
+  }
+  .header-extra {
+    height: 100px;
+    overflow: hidden;
+  }
+}
+#mallLogo {
+  width: 280px;
+  height: 64px;
+  line-height: 64px;
+  position: relative;
+  float: left;
+  z-index: 9;
+  padding-top: 28px;
+  .mlogo {
+    float: left;
+    margin-right: 10px;
+    padding: 0;
+    s {
+      background: url(https://img.alicdn.com/tps/i1/TB1JCr_IpXXXXcAXFXXOK.sIXXX-190-27.png) no-repeat;
+      height: 28px;
+      width: 190px;
+      position: absolute;
+      display: block;
+      top: 0;
+    }
+    a {
+      height: 30px;
+      font-size: 20px;
+      width: 190px;
+      overflow: hidden;
 
+    }
+
+  }
+  a {
+    position: relative;
+    display: block;
+    color: #fff;
+    text-indent: 0 !important;
+  }
+}
+#mall-search {
+  width: 410px;
+  height: 100px;
+  padding-top: 38px;
+  overflow: hidden;
+  box-sizing: border-box;
+  .searchTop {
+    border: 2px solid $main-color;
+  }
+  .mallSearch-input{
+    height: 36px;
+    button {
+      width: 132px;
+      height: 36px;
+      background-color: $main-color;
+      border: none;
+      float: right;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      color: #fff;
+      cursor: pointer;
+    }
+    .s-combox {
+      float: left;
+      height: 36px;
+      font-size: 12px;
+      position: relative;
+    }
+    .s-combox-input-wrap {
+      input {
+        width: 274px;
+        height: 36px;
+        padding: 5px 3px 5px 5px;
+        color: #000;
+        border: none;
+        margin: 0;
+        box-sizing: border-box;
+        outline: none;
+        &:focus {
+
+        }
+      }
+
+      z-index: 2;
+    }
+    label {
+      position: absolute;
+      top: 0;
+      left: 5px;
+      height: 36px;
+      font-size: 14px;
+      line-height: 36px;
+      color: rgba(102, 102, 102,.3);
+      visibility: visible;
+      max-width: 90%;
+      overflow: hidden;
+      white-space: nowrap;
+      z-index: 1;
+      cursor: text;
+    }
+  }
+  .hot-query {
+    width: 410px;
+    overflow: hidden;
+    height: 18px;
+    font-size: 12px;
+    padding: 8px 0 0 ;
+    margin-left: -10px;
+    li {
+      display: inline-block;
+      padding:0 12px;
+      line-height: 1.1;
+      border-right: 1px solid #ccc;
+      a {
+        color: #999;
+      }
+    }
+  }
+}
+
+#header, #content{
+  margin-left: auto;
+  margin-right: auto;
+}
+.headerCon, .clearfix {
+  &::before, &::after {
+    display: table;
+    content: "";
+    overflow: hidden;
+  }
+  &::after, .clearfix {
+    clear: both;
+  }
+}
 .hover {
   border-bottom: 1px solid;
   border-color: #fff;
@@ -270,6 +434,6 @@ li, ol, ul {list-style: none;}
   >b {
     transform: rotate(180deg);
   }
-  color: #c40000 !important;
+  color: $main-color !important;
   text-decoration: underline;
 }
