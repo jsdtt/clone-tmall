@@ -525,12 +525,10 @@ img {
       margin-left: 14px;
     }
   }
-  .category-type-content {
-
-  }
   // 左侧导航栏
   .nva-con {
     width: 200px;
+    height: 0;
     .normal-nva {
       height: 500px;
       background-color: rgba(238,238,238,.95);
@@ -582,7 +580,7 @@ img {
 
     .pannel-con {
       // 默认不可见,通过JS交互显示
-      // display: none;
+      display: none;
       .pannel-item-con {
         display: none;
       }
@@ -687,6 +685,85 @@ img {
             width: 189px;
             height: 87px;
           }
+        }
+      }
+    }
+  }
+  // 轮播banner
+  .banner-con {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    .banner-slider {
+      height: 500px;
+      .slider-content {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+      }
+      .main-banner {
+        width: 100%;
+        height: 500px;
+        display: block;
+        position: absolute;
+        transition: all .5s ease-in-out;
+      }
+      .main-banner-outcon {
+        width: 982px;
+        height: 100%;
+        position: relative;
+        z-index: 1;
+        display: block;
+        margin: 0 auto;
+        padding-left: 30px;
+        .main-banner-con {
+          width: 982px;
+          margin: 0 auto;
+          padding-right: 0;
+          margin-left: 120px;
+          height: 100%;
+
+          &2 {
+            // display: none;
+            // transition: all .5s;
+            height: 500px;
+            position: relative;
+            width: 100%;
+            cursor: pointer;
+            b {
+              // background: url('https://img.alicdn.com/tps/TB1pMPLPXXXXXcTXpXXXXXXXXXX-1130-500.jpg_q100.jpg_.webp') no-repeat center center;
+            }
+          }
+          .blg-banner {
+            width: 100%;
+            height: 100%;
+            display: block;
+            z-index: 1;
+          }
+        }
+      }
+      .slider-nav {
+        display: block;
+        position: relative;
+        margin: -40px auto 0;
+        text-align: center;
+        z-index: 100;
+        li {
+          background: url('./img/banner-nav.png') no-repeat;
+          width: 18px;
+          height: 18px;
+          border-radius: 11px;
+          display: inline-block;
+          padding: 2px;
+          overflow: hidden;
+          margin-left: 10px;
+          cursor: pointer;
+        }
+        .selected {
+          background: url('./img/banner-nav-selected.png') no-repeat;
         }
       }
     }
