@@ -540,21 +540,21 @@ img {
         box-sizing: border-box;
       }
     }
+    .nva-item-hover {
+      background-color: #fff !important;
+      .nav-item-icon, a {
+        opacity: 1 !important;
+      }
+      a {
+        color: pink !important;
+      }
+    }
     .nva-item{
       height: 31.2px;
       position: relative;
       line-height: 31.2px;
       color: #000;
       font-size: 14px;
-      &:hover {
-        background-color: #fff;
-        .nav-item-icon, a {
-          opacity: 1;
-        }
-        a {
-          color: pink !important;
-        }
-      }
       .nav-item-icon {
         display: inline-block;
         height: 31px;
@@ -579,9 +579,16 @@ img {
     top: 0;
     left: 0;
     z-index: 100;
-    // 默认不可见,通过JS交互显示
+
     .pannel-con {
-      display: none;
+      // 默认不可见,通过JS交互显示
+      // display: none;
+      .pannel-item-con {
+        display: none;
+      }
+      &:hover {
+        display: block;
+      }
       position: absolute;
       left: 200px;
       height: 500px;
