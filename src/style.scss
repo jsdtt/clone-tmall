@@ -2,6 +2,21 @@ $min-width: 990px;
 $sn-height: 32px;
 $main-color: #c40000;
 
+
+@keyframes big-play-btn-hover {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.2);}
+  100% {transform: scale(1);}
+}
+
+@keyframes fc-trans {
+  0% {margin-top: 0;}
+  45% {margin-top: -40px;}
+  90% {margin-top: -80px;}
+  100% {margin-top: 0;}
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -16,6 +31,9 @@ li, ol, ul {list-style: none;}
 
 img {
   vertical-align: middle;
+}
+body {
+  background-color: #f5f5f5;
 }
 
 #mallPage, #site-nav{
@@ -769,6 +787,263 @@ img {
     }
   }
 }
+
+.activity-bg {
+  .area-con {
+    width: 982px;
+    padding-top: 30px;
+    margin: auto;
+    padding-right: 0;
+  }
+}
+// banner下面直播那部分
+.new-hot-brand-con {
+  width: 982px;
+  padding-right: 0;
+  margin: 30px auto 0;
+  position: relative;
+  .module-body {
+    height: 436px !important;
+    overflow: hidden;
+    background: #fff;
+    width: 100%;
+    // 当滚动到这部分的时候显示
+    // opacity: 0;
+    * {box-sizing: border-box;}
+    .live-con {
+      float: left;
+      width: 488px;
+      height: 436px;
+      overflow: hidden;
+      background-color: #050505;
+    }
+    // 直播容器
+    .live-play-ctn {
+      width: 488px;
+      height: 275px;
+      background-color: #ddd;
+      position: relative;
+      &:hover {
+        .big-play-btn img{
+          // transform: scale(1.1);
+          animation: .5s big-play-btn-hover;
+        }
+      }
+      .live-cover {
+        width: 488px;
+        height: 275px;
+        position: absolute;
+        z-index: 100;
+      }
+      .big-live-cover {
+        width: 488px;
+        height: 275px;
+        z-index: 1;
+        position: absolute;
+      }
+      .above-cover {
+        background-image: url('./img/above-cover-bg.png');
+        background-position: 0 150px;
+        background-repeat: repeat-x;
+        position: absolute;
+        width: 488px;
+        height: 275px;
+        z-index: 100;
+        .status-ind {
+          position: absolute;
+          top: 15px;
+          right: 16px;
+          border-radius: 10px;
+          height: 20px;
+          background-color: rgba(0,0,0,.6);
+          line-height: 19px;
+          font-size: 12px;
+          color: #fff;
+          padding: 0 0.75em 0.5em;
+          display: inline-block;
+          span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            margin-right: 2px;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAMAAADz0U65AAAAP1BMVEX/SYX/SV8AAAD/R4D/RV/+SIb/R3L/R23/RVn9SIf/R2f/RVn/SHn9R3n+R3n+RnL/RWz/RWX/RV/+R4D9R3/0/XtaAAAADnRSTlMcHADt7ebm5uampqampscrG+wAAAAzSURBVAjXY2Bi4GVj52JkYmBg5uMXEGRhZOAUBjGEuBlYIQwOBlYRCAMuBVcM1M4D1g4AYFQCrQRCqPUAAAAASUVORK5CYII=');
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+        }
+        .big-play-btn {
+          width: 75px;
+          height: 57px;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-35px, -28.5px);
+
+          display: inline-block;
+          background-position: center;
+          img {
+            width: 100%;
+            height: auto;
+            transition: all .3s;
+          }
+        }
+        .big-live-title {
+          position: absolute;
+          padding: 0 2em;
+          width: 100%;
+          text-align: center;
+          bottom: 43px;
+          font-size: 24px;
+          line-height: 33px;
+          color: #fff;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+    // 直播列表容器
+    .live-slide-list {
+      height: 90px;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      margin-top: 9px;
+      // slide-item=====begin
+      .live-slide-item {
+        float: left;
+        position: relative;
+        width: 160px;
+        height: 90px;
+        background-color: #ddd;
+        cursor: pointer;
+        margin-left: 4px;
+        &:first-child {
+          margin-left: 0;
+        }
+        .slide-cover {
+          position: absolute;
+          width: 160px;
+          height: 90px;
+          z-index: 1;
+        }
+        .bottom-gradin-mask {
+          background-image: url('./img/slide-bottom-cover.png');
+          position: absolute;
+          height: 38px;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background-repeat: repeat-x;
+        }
+        // 视频列表选中后增加遮罩
+        .slide-selected {
+          background-image: url('./img/item-cover-bg.png');
+          .slide-item-play-btn {
+            // display: block;
+          }
+        }
+        .above-cover {
+          position: absolute;
+          width: 160px;
+          height: 90px;
+          background-repeat: repeat;
+          z-index: 100;
+          .slide-item-play-btn {
+            // display: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 36px;
+            height: 30px;
+            margin-left: -18px;
+            margin-top: -15px;
+            img {
+              width: 100%;
+              height: auto;
+            }
+          }
+          .live-title {
+            position: absolute;
+            padding: 0 1em;
+            font-size: 12px;
+            line-height: 17px;
+            text-align: center;
+            width: 100%;
+            height: 17px;
+            color: #fff;
+            bottom: 8px;
+            overflow: hidden;
+            // 长度溢出显示....
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
+      }
+      // slide-item ==== end
+      .slide-page- {
+        &next, &prev {
+          position: absolute;
+          top: 0;
+          height: 90px;
+          width: 17px;
+          z-index: 100;
+        }
+        &next {
+          background-image: url('./img/slide-next.png');
+          right: 0;
+        }
+        &prev {
+          background-image: url('./img/slide-prev.png');
+          left: 0;
+        }
+      }
+    }
+    // 底部滚动消息
+    .live-forecast {
+      width: 390px;
+      height: 40px;
+      margin: 0 auto;
+      margin-top: 10px;
+      margin-left: 21px;
+      overflow: hidden;
+      .forecast-logo {
+        float: left;
+        width: 81px;
+        height: 31px;
+        margin-top: 4px;
+        margin-right: 9px;
+        background-image: -webkit-image-set(url('./img/fc-logo.png') 1x,url('./img/fc-logo-2x.png') 2x);
+      }
+      .forecast-list-ctn {
+        float: right;
+        width: 300px;
+        height: 40px;
+        overflow: hidden;
+        transition: translate .2s linear;
+        .fc-item {
+          line-height: 20px;
+          height: 40px;
+          font-size: 14px;
+          color: #fff;
+          &:first-child {
+            animation: 6s fc-trans infinite
+          }
+        }
+        .item-time {
+          color: #FD4889;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          // 文本不换行
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+}
+
+
 
 #header, #content{
   margin-left: auto;
