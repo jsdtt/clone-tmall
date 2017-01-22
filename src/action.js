@@ -20,6 +20,10 @@ window.onload = function() {
       }
     }
   }
+
+  window.onblur = function() {
+    alert('onblur')
+  }
 }
 
 /**
@@ -73,6 +77,10 @@ function showNormalNvaPannel() {
       isShow(e.target)
     }
   }, false);
+  nurmalNva.addEventListener('mouseleave', function() {
+    pannelWapper.style.display = 'none'
+  }, false);
+
   pannelWapper.addEventListener('mouseleave', function() {
     pannelWapper.style.display = 'none'
   })
