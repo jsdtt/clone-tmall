@@ -3,7 +3,27 @@ window.onload = function() {
   showNormalNvaPannel()
 
   initBanner()
+  window.onscroll = function() {
+    const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+    let searchBars = document.getElementsByName('searchBar')
 
+    // console.log(scrollTop);
+    if (scrollTop >= 600) {
+      // debugger
+
+      for (var i = 0; i < searchBars.length; i++) {
+        if (!/\bshow\b/.test(searchBars[i].className)) {
+          searchBars[i].className += " show"
+        }
+      }
+    }
+    if (scrollTop <= 580 ) {
+      // debugger
+      for (var i = 0; i < searchBars.length; i++) {
+        searchBars[i].className = searchBars[i].className.replace(/\bshow\b/, '')
+      }
+    }
+  }
 }
 
 /**
@@ -61,7 +81,7 @@ function showNormalNvaPannel() {
     pannelWapper.style.display = 'none'
   })
   nurmalNva.addEventListener('mouseleave', function(e) {
-    if (e.toElement.className.toUpperCase() !== 'PANNEL-CON') {
+    if (e.toElement && e.toElement.className.toUpperCase() !== 'PANNEL-CON') {
       pannelWapper.style.display = 'none'
     }
   })
