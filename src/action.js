@@ -3,22 +3,18 @@ window.onload = function() {
   showNormalNvaPannel()
 
   initBanner()
+  liveHover()
   window.onscroll = function() {
     const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
     let searchBars = document.getElementsByName('searchBar')
-
-    // console.log(scrollTop);
     if (scrollTop >= 600) {
-      // debugger
-
       for (var i = 0; i < searchBars.length; i++) {
         if (!/\bshow\b/.test(searchBars[i].className)) {
           searchBars[i].className += " show"
         }
       }
     }
-    if (scrollTop <= 580 ) {
-      // debugger
+    if (scrollTop <= 580) {
       for (var i = 0; i < searchBars.length; i++) {
         searchBars[i].className = searchBars[i].className.replace(/\bshow\b/, '')
       }
@@ -116,7 +112,11 @@ function showNormalNvaPannel() {
   }
 }
 
-
+/**
+ * 初始化banner
+ * @param  {[type]} info [description]
+ * @return {[type]}      [description]
+ */
 function initBanner(info) {
   let index = 0;
   let bannerInfo = info || [{
@@ -148,11 +148,12 @@ function initBanner(info) {
   let banners = document.getElementsByClassName('blg-banner')
   let nvas = []
 
-  for (item of document.getElementsByClassName('slider-nav')[0].childNodes) {
-    if (item.nodeName !== '#text') {
-      nvas.push(item)
-    }
-  }
+  // for (item of document.getElementsByClassName('slider-nav')[0].childNodes) {
+  //   if (item.nodeName !== '#text') {
+  //     nvas.push(item)
+  //   }
+  // }
+  nvas = getNodeChildrens(document.getElementsByClassName('slider-nav')[0].childNodes)
   for (var i = 0; i < pannels.length; i++) {
     if (i !== 0) {
       pannels[i].style.opacity = 0
@@ -175,4 +176,85 @@ function initBanner(info) {
     }, 400);
   }, 5000)
 
+}
+
+function liveHover() {
+  let liveSlides = document.getElementsByClassName('live-slide-list')[0]
+  let currentEle = liveSlides.getElementsByClassName('above-cover')[0]
+
+  liveSlides.addEventListener('mouseover', function(e) {
+    let fromEle, btnNode, bigLiveBtn, bigLiveTitle
+
+    e = window.e || e
+    fromEle = e.fromElement || e.relatedTarget
+    bigLiveBtn = document.getElementsByClassName('big-live-cover')[0]
+    bigLiveTitle = document.getElementsByClassName('big-live-title')[0]
+    // 如果鼠标移入封面
+    if (/\babove-cover\b/.test(e.target.className)) {
+      if (currentEle === e.target) {
+        return
+      }
+
+      if (document.all) { //判断浏览器是否为IE,如果存在document.all则为IE
+        if (!e.target.contains(fromEle)) { // 判断调用onmouseover的对象(this)是否包含自身或子级，如果包含，则不执行
+          console.log('IE will over');
+        }
+      } else { //标准浏览器下的方法
+        var reg = e.target.compareDocumentPosition(fromEle);
+        if (!(reg == 20 || reg == 0)) {
+          if (!/\bslide-selected\b/.test(e.target.className)) {
+            currentEle.className = currentEle.className.replace(/\b slide-selected\b/,'')
+            getNodeChildrens(currentEle.childNodes)[0].style.display = 'none'
+
+            e.target.className += ' slide-selected'
+            btnNode = getNodeChildrens(e.target.childNodes)
+            btnNode[0].style.display = 'block'
+
+            bigLiveBtn.src = e.target.parentNode.getElementsByTagName('img')[0].src
+            bigLiveTitle.innerHTML = btnNode[1].innerHTML
+            // console.log(btnNode[0].getElementsByTagName('img')[0].src);
+            currentEle = e.target
+          }
+        }
+      }
+    }
+
+  }, false)
+
+  // liveSlides.addEventListener('click',function (e) {
+  //   e = window.e || e
+  //   if (/\bslide-page-next\b/.test(e.target.className)) {
+  //     e.parentNode.style['margin-left'] = '-480px'
+  //   }
+  // },false)
+}
+
+/**
+ * 获取节点下的子节点，去除空格
+ * @param  {[type]} elements [description]
+ * @return {[type]}          [description]
+ */
+function getNodeChildrens(elements) {
+  let nvas =[]
+  for (item of elements) {
+    if (item.nodeType === 1) {
+      nvas.push(item)
+    }
+  }
+  return nvas
+}
+
+function nextOrPerv(element) {
+  let parentElement = element.parentNode
+  let btns = parentElement.getElementsByTagName('a')
+  if (/\bslide-page-next\b/.test(element.className)) {
+    // debugger
+    parentElement.style['margin-left'] = '-492px'
+    element.style.display = 'none'
+    btns[7].style.display = 'block'
+  }else {
+    element.parentNode.style['margin-left'] = '0'
+    element.style.display = 'none'
+    btns[6].style.display = 'block'
+  }
 }

@@ -909,6 +909,10 @@ body {
       overflow: hidden;
       position: relative;
       margin-top: 9px;
+      .items-ctn {
+        transition: margin-left .5s ease-out;
+
+      }
       // slide-item=====begin
       .live-slide-item {
         float: left;
@@ -920,6 +924,18 @@ body {
         margin-left: 4px;
         &:first-child {
           margin-left: 0;
+          .above-cover .slide-item-play-btn {
+            display: block;
+          }
+        }
+        // &:nth-child(4) {
+        //   margin-left: 0;
+        // }
+        &:hover {
+          .slide-item-play-btn img{
+            // transform: scale(1.1);
+            animation: .5s big-play-btn-hover;
+          }
         }
         .slide-cover {
           position: absolute;
@@ -939,9 +955,6 @@ body {
         // 视频列表选中后增加遮罩
         .slide-selected {
           background-image: url('./img/item-cover-bg.png');
-          .slide-item-play-btn {
-            // display: block;
-          }
         }
         .above-cover {
           position: absolute;
@@ -950,7 +963,7 @@ body {
           background-repeat: repeat;
           z-index: 100;
           .slide-item-play-btn {
-            // display: none;
+            display: none;
             position: absolute;
             left: 50%;
             top: 50%;
@@ -961,7 +974,9 @@ body {
             img {
               width: 100%;
               height: auto;
+              transition: all .3s;
             }
+
           }
           .live-title {
             position: absolute;
@@ -988,6 +1003,7 @@ body {
           height: 90px;
           width: 17px;
           z-index: 100;
+          cursor: pointer;
         }
         &next {
           background-image: url('./img/slide-next.png');
@@ -996,6 +1012,7 @@ body {
         &prev {
           background-image: url('./img/slide-prev.png');
           left: 0;
+          display: none;
         }
       }
     }
