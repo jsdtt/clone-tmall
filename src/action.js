@@ -256,3 +256,26 @@ function nextOrPerv(element) {
     btns[6].style.display = 'block'
   }
 }
+
+function brandFresh() {
+  let freshBtn = document.getElementById('brandFreshBtn')
+  let brandItems = document.getElementsByClassName('brand-item')
+  let i = 0
+
+  for (item of brandItems) {
+    if (/\bbrand-fresh-animation\b/.test(item.className)) {
+      item.className = item.className.replace(/\bbrand-fresh-animation\b/, '')
+      item.className = item.className.replace(/\s/g,'')
+    }
+  }
+
+  setTimeout(function (){
+    for (item of brandItems) {
+      item.className += " brand-fresh-animation"
+      item.style['animation-delay'] = `${i/10}s`
+      ++i;
+      // 同时进行数据替换操作就实现刷新了
+    }
+  },50)
+
+}

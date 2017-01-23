@@ -1063,6 +1063,9 @@ body {
       height: 100%;
       float: right;
       margin-left: -1px;
+      .brand-fresh-animation {
+        animation: .4s trans forwards;
+      }
       .brand-item {
         width: 121px;
         height: 108px;
@@ -1070,6 +1073,8 @@ body {
         margin-bottom: 1px;
         float: left;
         position: relative;
+        // 只要点击刷新动态添加一个动画的css或类就好了
+        // animation: .8s trans forwards;
         &:hover {
           .brand-mask {
             opacity: 1;
@@ -1110,6 +1115,7 @@ body {
             cursor: pointer;
             opacity: .8;
             text-align: center;
+            font-family: "iconfont" !important;
           }
           .coupon {
             height: 60px;
@@ -1150,6 +1156,7 @@ body {
         bottom: 1px;
         right: 1px;
         transition: all .5s;
+        cursor: pointer;
         &:hover {
           background-color: #dd2727;
           color: #fff;
@@ -1180,6 +1187,19 @@ body {
     }
   }
 
+}
+
+//
+@keyframes trans {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(90deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
 }
 
 @keyframes fresh {
