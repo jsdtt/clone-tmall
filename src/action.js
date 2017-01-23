@@ -20,10 +20,6 @@ window.onload = function() {
       }
     }
   }
-
-  window.onblur = function() {
-    alert('onblur')
-  }
 }
 
 /**
@@ -229,12 +225,6 @@ function liveHover() {
 
   }, false)
 
-  // liveSlides.addEventListener('click',function (e) {
-  //   e = window.e || e
-  //   if (/\bslide-page-next\b/.test(e.target.className)) {
-  //     e.parentNode.style['margin-left'] = '-480px'
-  //   }
-  // },false)
 }
 
 /**
