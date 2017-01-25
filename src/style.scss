@@ -229,6 +229,12 @@ body {
       }
     }
     .sn-sitemap {
+      i {
+        font-family: "iconfont" !important;
+        font-size: 14px;
+        color: #c40000;
+        padding-right: 4px;
+      }
       ul {
         overflow: hidden;
         margin-right: -20px;
@@ -1189,7 +1195,111 @@ body {
 
 }
 
-//
+.channel-con {
+  width: 982px;
+  height: 577px;
+  margin: 30px auto 0;
+  i {
+    font-family: "iconfont" !important;
+  }
+  .channel-column {
+    background-color: #fff;
+    width: 238px;
+    height: 476px;
+    margin-right: 10px;
+    text-align: center;
+    float: left;
+    border-bottom: 1px solid transparent;
+    &:last-child {
+      margin-right: 0;
+    }
+    .column-title {
+      height: 36px;
+      text-align: center;
+      line-height: 36px;
+      color: #FFF;
+      font-size: 18px;
+      font-weight: 700;
+      background-color: #DD2727;
+      .text {
+        height: 36px;
+        line-height: 36px;
+        margin-left: 5px;
+      }
+    }
+    a {
+      width: 238px;
+      height: 220px;
+      display: block;
+      overflow: hidden;
+      &:hover {
+        img {
+          transform: scale(1.1);
+        }
+      }
+
+    }
+    .item-title {
+      width: 100%;
+      line-height: 24px;
+      height: 24px;
+      font-size: 22px;
+      position: relative;
+      display: block;
+      margin-top: 19px;
+    }
+    .item-sub-title {
+      width: 100%;
+      line-height: 14px;
+      height: 14px;
+      color: #888;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    .img-con {
+      width: 140px;
+      height: 140px;
+      position: relative;
+      margin: 9px auto 0;
+      .img-maske {
+        width: 140px;
+        height: 140px;
+        position: absolute;
+        background-color: #000;
+        border-radius: 50%;
+        opacity: .03;
+        top: 0;
+        left: 0;
+        z-index: 10;
+      }
+      img {
+        width: 95%;
+        display: block;
+        transition: transform .3s;
+      }
+    }
+    .seprate {
+      height: 1px;
+      width: 200px;
+      background-color: #eee;
+      margin: 0 auto;
+    }
+
+  }
+  .full-banner {
+    overflow: hidden;
+    width: 982px;
+    height: 90px;
+    margin: 10px auto 0 ;
+    margin-top: 10px;
+    cursor: pointer;
+    img {
+      margin-left: -313.5px;
+    }
+  }
+}
+
+//刷新翻转卡片动画
 @keyframes trans {
   0% {
     transform: rotateY(0deg);
@@ -1201,7 +1311,7 @@ body {
     transform: rotateY(0deg);
   }
 }
-
+// 刷新按钮的旋转动画
 @keyframes fresh {
   0% {transform: rotate(0);}
   99% {transform: rotate(360deg);}
