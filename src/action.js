@@ -73,8 +73,13 @@ function showNormalNvaPannel() {
       isShow(e.target)
     }
   }, false);
-  nurmalNva.addEventListener('mouseleave', function() {
-    pannelWapper.style.display = 'none'
+  nurmalNva.addEventListener('mouseleave', function(e) {
+    const toElemnt = e.toElement || e.relatedTarget
+    // 当浏览器失去焦点的时候，toElement为null
+    if (! toElemnt) {
+      pannelWapper.style.display = 'none'
+    }
+
   }, false);
 
   pannelWapper.addEventListener('mouseleave', function() {
@@ -101,10 +106,7 @@ function showNormalNvaPannel() {
       }
     })
     element.addEventListener('mouseleave', function functionName(e) {
-      if (!e.toElement) {
-        return
-      }
-      if (pannelEle && e.toElement.className !== 'pannel-con') {
+      if (!e.toElement || (pannelEle && e.toElement.className !== 'pannel-con')) {
         pannelEle.style.display = 'none'
         element.className = element.className.substring(0, 20)
       }
@@ -273,7 +275,8 @@ function brandFresh() {
     for (item of brandItems) {
       item.className += " brand-fresh-animation"
       item.style['animation-delay'] = `${i/10}s`
-      ++i;
+      i = i === 6 ? 0 : i+1
+      // ++i;
       // 同时进行数据替换操作就实现刷新了
     }
   },50)
