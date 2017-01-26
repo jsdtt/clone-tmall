@@ -127,7 +127,7 @@ function initBanner(info) {
   let index = 0;
   let bannerInfo = info || [{
       'bgcolor': 'rgb(136, 3, 227)',
-      'url': 'https://img.alicdn.com/tps/TB1pMPLPXXXXXcTXpXXXXXXXXXX-1130-500.jpg_q100.jpg_.webp'
+      'url': 'https://img.alicdn.com/tps/TB1pMPLPXXXXXcTXpXXXXXXXXXX-1130-500.jpg_q100.jpg'
     },
     {
       'bgcolor': 'rgb(232, 232, 232)',
@@ -143,11 +143,11 @@ function initBanner(info) {
     },
     {
       'bgcolor': 'rgb(5, 119, 201)',
-      'url': 'https://img.alicdn.com/imgextra/i4/126/TB2doVedNtmpuFjSZFqXXbHFpXa_!!126-0-yamato.jpg_q100.jpg_.webp'
+      'url': 'https://img.alicdn.com/imgextra/i4/126/TB2doVedNtmpuFjSZFqXXbHFpXa_!!126-0-yamato.jpg_q100.jpg'
     },
     {
       'bgcolor': 'rgb(220, 30, 30)',
-      'url': 'https://img.alicdn.com/imgextra/i2/12/TB2qxdJbMxlpuFjy0FoXXa.lXXa_!!12-0-yamato.jpg_q100.jpg_.webp'
+      'url': 'https://img.alicdn.com/imgextra/i2/12/TB2qxdJbMxlpuFjy0FoXXa.lXXa_!!12-0-yamato.jpg_q100.jpg'
     },
   ]
   let pannels = document.getElementsByClassName('slider-pannel')
@@ -263,7 +263,7 @@ function brandFresh() {
   let freshBtn = document.getElementById('brandFreshBtn')
   let brandItems = document.getElementsByClassName('brand-item')
   let i = 0
-
+// 增加babel转换成Es5
   for (item of brandItems) {
     if (/\bbrand-fresh-animation\b/.test(item.className)) {
       item.className = item.className.replace(/\bbrand-fresh-animation\b/, '')
