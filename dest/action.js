@@ -1,7 +1,5 @@
 'use strict';
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
 window.onload = function () {
   showPanel();
   showNormalNvaPannel();
@@ -286,17 +284,16 @@ function nextOrPerv(element) {
 function brandFresh() {
   var freshBtn = document.getElementById('brandFreshBtn');
   var brandItems = document.getElementsByClassName('brand-item');
-  var i = 0;
-  // 增加babel转换成Es5.
+  var delay = void 0;
+  // 增加babel转换成Es5
+  // Array.from 将类数组转换成array
   var _iteratorNormalCompletion2 = true;
   var _didIteratorError2 = false;
   var _iteratorError2 = undefined;
 
   try {
-    for (var _iterator2 = Object.entries(brandItems)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-      var _step2$value = _slicedToArray(_step2.value, 2),
-          index = _step2$value[0],
-          item = _step2$value[1];
+    for (var _iterator2 = Array.from(brandItems)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+      var item = _step2.value;
 
       if (/\bbrand-fresh-animation\b/.test(item.className)) {
         item.className = item.className.replace(/\bbrand-fresh-animation\b/, '');
@@ -319,35 +316,36 @@ function brandFresh() {
   }
 
   setTimeout(function () {
-    var _iteratorNormalCompletion3 = true;
-    var _didIteratorError3 = false;
-    var _iteratorError3 = undefined;
-
-    try {
-      for (var _iterator3 = Object.entries(brandItems)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-        var _step3$value = _slicedToArray(_step3.value, 2),
-            index = _step3$value[0],
-            item = _step3$value[1];
-
-        item.className += " brand-fresh-animation";
-        item.style['animation-delay'] = i / 10 + 's';
-        i = i === 6 ? 0 : i + 1;
-        // ++i;
-        // 同时进行数据替换操作就实现刷新了
+    for (var i = 0; i < brandItems.length; i++) {
+      switch (i) {
+        case 1:
+        case 4:
+          delay = '.1s';
+          break;
+        case 2:
+        case 5:
+        case 8:
+          delay = '.2s';
+          break;
+        case 3:
+        case 6:
+        case 9:
+        case 12:
+          delay = '.3s';
+          break;
+        case 7:
+        case 10:
+        case 13:
+          delay = '.4s';
+          break;
+        case 11:
+        case 14:
+          delay = '.5s';
+          break;
+        default:
       }
-    } catch (err) {
-      _didIteratorError3 = true;
-      _iteratorError3 = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion3 && _iterator3.return) {
-          _iterator3.return();
-        }
-      } finally {
-        if (_didIteratorError3) {
-          throw _iteratorError3;
-        }
-      }
+      brandItems[i].className += " brand-fresh-animation";
+      brandItems[i].style['animation-delay'] = delay;
     }
   }, 50);
 }

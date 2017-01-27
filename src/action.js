@@ -263,22 +263,46 @@ function nextOrPerv(element) {
 function brandFresh() {
   let freshBtn = document.getElementById('brandFreshBtn')
   let brandItems = document.getElementsByClassName('brand-item')
-  let i = 0
-// 增加babel转换成Es5.
-  for (let [index, item] of Object.entries(brandItems)) {
+  let delay
+// 增加babel转换成Es5
+// Array.from 将类数组转换成array
+  for (let item of Array.from(brandItems)) {
     if (/\bbrand-fresh-animation\b/.test(item.className)) {
       item.className = item.className.replace(/\bbrand-fresh-animation\b/, '')
       item.className = item.className.replace(/\s/g,'')
     }
   }
-
   setTimeout(function (){
-    for (let [index, item] of Object.entries(brandItems)) {
-      item.className += " brand-fresh-animation"
-      item.style['animation-delay'] = `${i/10}s`
-      i = i === 6 ? 0 : i+1
-      // ++i;
-      // 同时进行数据替换操作就实现刷新了
+    for (var i = 0; i < brandItems.length; i++) {
+      switch (i) {
+        case 1:
+        case 4:
+          delay = '.1s'
+          break;
+        case 2:
+        case 5:
+        case 8:
+          delay = '.2s'
+          break;
+        case 3:
+        case 6:
+        case 9:
+        case 12:
+          delay = '.3s'
+          break;
+        case 7:
+        case 10:
+        case 13:
+          delay = '.4s'
+          break;
+        case 11:
+        case 14:
+          delay = '.5s'
+          break;
+        default:
+      }
+      brandItems[i].className += " brand-fresh-animation"
+      brandItems[i].style['animation-delay'] = delay
     }
   },50)
 
