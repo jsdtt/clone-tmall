@@ -1,3 +1,4 @@
+
 window.onload = function() {
   showPanel()
   showNormalNvaPannel()
@@ -236,7 +237,7 @@ function liveHover() {
  */
 function getNodeChildrens(elements) {
   let nvas =[]
-  for (item of elements) {
+  for (let item of elements) {
     if (item.nodeType === 1) {
       nvas.push(item)
     }
@@ -263,8 +264,8 @@ function brandFresh() {
   let freshBtn = document.getElementById('brandFreshBtn')
   let brandItems = document.getElementsByClassName('brand-item')
   let i = 0
-// 增加babel转换成Es5
-  for (item of brandItems) {
+// 增加babel转换成Es5.
+  for (let [index, item] of Object.entries(brandItems)) {
     if (/\bbrand-fresh-animation\b/.test(item.className)) {
       item.className = item.className.replace(/\bbrand-fresh-animation\b/, '')
       item.className = item.className.replace(/\s/g,'')
@@ -272,7 +273,7 @@ function brandFresh() {
   }
 
   setTimeout(function (){
-    for (item of brandItems) {
+    for (let [index, item] of Object.entries(brandItems)) {
       item.className += " brand-fresh-animation"
       item.style['animation-delay'] = `${i/10}s`
       i = i === 6 ? 0 : i+1
