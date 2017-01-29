@@ -5,8 +5,32 @@ window.onload = function() {
 
   initBanner()
   liveHover()
-  window.onscroll = function() {
-    const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+  window.onscroll = debounce(showTopSearchBar,500)
+  
+}
+
+/**
+ * 函数防抖
+ */
+function debounce(fn, delay){
+  let timer = null 
+
+  return function() {
+    let context = this
+    let args = arguments
+    // 再次触发则重新计时
+    clearTimeout(timer)
+    timer = setTimeout(function() {
+      fn.apply(context, args)
+    }, delay);
+  }
+}
+
+/**
+ * 当滚动到下拉到一定距离时，显示搜索栏
+ */
+function showTopSearchBar() {
+  const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
     let searchBars = document.getElementsByName('searchBar')
     if (scrollTop >= 600) {
       for (var i = 0; i < searchBars.length; i++) {
@@ -20,7 +44,6 @@ window.onload = function() {
         searchBars[i].className = searchBars[i].className.replace(/\bshow\b/, '')
       }
     }
-  }
 }
 
 /**
