@@ -176,7 +176,10 @@ function initBanner(info) {
   ]
   let pannels = document.getElementsByClassName('slider-pannel')
   let banners = document.getElementsByClassName('blg-banner')
+  // floor-con下title-item
+  let floorItems = document.getElementsByClassName('title-item');
   let nvas = []
+  let floorIndex = 0
 
   // for (item of document.getElementsByClassName('slider-nav')[0].childNodes) {
   //   if (item.nodeName !== '#text') {
@@ -194,6 +197,7 @@ function initBanner(info) {
   }
   nvas[0].className = 'selected'
 
+  // 主Banner计时器
   let timer = setInterval(function() {
     index = index + 1 === pannels.length ? 0 : index + 1
     let pro = index - 1 < 0 ? banners.length - 1 : index - 1
@@ -204,7 +208,17 @@ function initBanner(info) {
       pannels[index].style.opacity = 1
       nvas[index].className = 'selected'
     }, 400);
+
+    // 处理div.act-title-ctn 的标题滚动
+    floorIndex = floorIndex + 1 === floorItems.length ? 0 : floorIndex + 1
+    // 官网是动态插入的，所以他的循环是对节点顺序进行操作，显示的永远是得一个节点
+    floorItems[0].style['margin-top'] = `-${floorIndex*30}px`
   }, 5000)
+
+  
+  let floorTimer = setInterval(function() {
+
+  },5000)
 
 }
 

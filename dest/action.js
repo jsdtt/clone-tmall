@@ -6,23 +6,45 @@ window.onload = function () {
 
   initBanner();
   liveHover();
-  window.onscroll = function () {
-    var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-    var searchBars = document.getElementsByName('searchBar');
-    if (scrollTop >= 600) {
-      for (var i = 0; i < searchBars.length; i++) {
-        if (!/\bshow\b/.test(searchBars[i].className)) {
-          searchBars[i].className += " show";
-        }
-      }
-    }
-    if (scrollTop <= 580) {
-      for (var i = 0; i < searchBars.length; i++) {
-        searchBars[i].className = searchBars[i].className.replace(/\bshow\b/, '');
-      }
-    }
-  };
+  window.onscroll = debounce(showTopSearchBar, 500);
 };
+
+/**
+ * 函数防抖
+ */
+function debounce(fn, delay) {
+  var timer = null;
+
+  return function () {
+    var context = this;
+    var args = arguments;
+    // 再次触发则重新计时
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      fn.apply(context, args);
+    }, delay);
+  };
+}
+
+/**
+ * 当滚动到下拉到一定距离时，显示搜索栏
+ */
+function showTopSearchBar() {
+  var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+  var searchBars = document.getElementsByName('searchBar');
+  if (scrollTop >= 600) {
+    for (var i = 0; i < searchBars.length; i++) {
+      if (!/\bshow\b/.test(searchBars[i].className)) {
+        searchBars[i].className += " show";
+      }
+    }
+  }
+  if (scrollTop <= 580) {
+    for (var i = 0; i < searchBars.length; i++) {
+      searchBars[i].className = searchBars[i].className.replace(/\bshow\b/, '');
+    }
+  }
+}
 
 /**
  * 事件代理实现li的监听，显示子菜单
@@ -149,7 +171,10 @@ function initBanner(info) {
   }];
   var pannels = document.getElementsByClassName('slider-pannel');
   var banners = document.getElementsByClassName('blg-banner');
+  // floor-con下title-item
+  var floorItems = document.getElementsByClassName('title-item');
   var nvas = [];
+  var floorIndex = 0;
 
   // for (item of document.getElementsByClassName('slider-nav')[0].childNodes) {
   //   if (item.nodeName !== '#text') {
@@ -167,6 +192,7 @@ function initBanner(info) {
   }
   nvas[0].className = 'selected';
 
+  // 主Banner计时器
   var timer = setInterval(function () {
     index = index + 1 === pannels.length ? 0 : index + 1;
     var pro = index - 1 < 0 ? banners.length - 1 : index - 1;
@@ -177,7 +203,14 @@ function initBanner(info) {
       pannels[index].style.opacity = 1;
       nvas[index].className = 'selected';
     }, 400);
+
+    // 处理div.act-title-ctn 的标题滚动
+    floorIndex = floorIndex + 1 === floorItems.length ? 0 : floorIndex + 1;
+    // 官网是动态插入的，所以他的循环是对节点顺序进行操作，显示的永远是得一个节点
+    floorItems[0].style['margin-top'] = '-' + floorIndex * 30 + 'px';
   }, 5000);
+
+  var floorTimer = setInterval(function () {}, 5000);
 }
 
 function liveHover() {
