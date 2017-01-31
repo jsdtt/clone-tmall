@@ -210,9 +210,10 @@ function initBanner(info) {
     }, 400);
 
     // 处理div.act-title-ctn 的标题滚动
-    floorIndex = floorIndex + 1 === floorItems.length ? 0 : floorIndex + 1
+    floorIndex = floorIndex + 1 === 3 ? 0 : floorIndex + 1
     // 官网是动态插入的，所以他的循环是对节点顺序进行操作，显示的永远是得一个节点
     floorItems[0].style['margin-top'] = `-${floorIndex*30}px`
+    floorItems[3].style['margin-top'] = `-${floorIndex*30}px`
   }, 5000)
 
   

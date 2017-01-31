@@ -1330,6 +1330,19 @@ body {
       font-size: 12px;
       vertical-align: top;
     }
+    &:nth-child(2) {
+      .color-mark, .title-con {
+        background-color: #0AA6E8 !important;
+      }
+      .big-banner-con:hover{
+        .title-item {
+          color: #0AA6E8 !important;
+        }
+      }
+      .grid .sub-title {
+        color: #0AA6E8 !important;
+      }
+    }
   }
   .line-body {
     width: 100%;
@@ -1467,9 +1480,12 @@ body {
             transition: right .2s;
           }
         }
+        .two-grid {
+          width: 488px;
+          height: 220px;
+        }
       }
   }
-
 }
 
 //刷新翻转卡片动画
