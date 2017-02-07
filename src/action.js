@@ -1,3 +1,16 @@
+// var Layzr = require('layzr.js') 
+
+const instance = Layzr()
+
+// start it up, when the DOM is ready
+
+document.addEventListener('DOMContentLoaded', event => {
+  instance
+    .update()           // track initial elements
+    .check()            // check initial elements
+    .handlers(true)     // bind scroll and resize handlers
+})
+
 
 window.onload = function() {
   showPanel()
@@ -6,7 +19,6 @@ window.onload = function() {
   initBanner()
   liveHover()
   window.onscroll = debounce(showTopSearchBar,500)
-  
 }
 
 /**
