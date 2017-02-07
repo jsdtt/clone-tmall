@@ -1617,6 +1617,8 @@ body {
 }
 
 .wonderful-con {
+  
+
       width: 982px;
       margin: 30px auto 0;
       .wonderful-title {
@@ -1738,7 +1740,105 @@ body {
         background-size: cover;
         z-index: 9;
       }
+}
+
+#footer {
+  min-height: 558px;
+  margin: 0;
+  border-top: 1px solid #d1d7dc;
+  clear: both;
+  text-align: center;
+  background-color: #fff;
+  position: relative;
+  
+}
+#tm-ensure {
+  background: url(https://img.alicdn.com/tps/i2/T1vYemFC0eXXcnC4Lh-990-100.jpg) no-repeat;
+  width: 999px;
+  height: 100px;
+  margin: 25px auto;
+  padding: 0;
+  a {
+    width: 247px;
+    height: 100px;
+    // display: inline-block;
+    float: left;
+  }
+}
+#tmall-desc {
+  width: 990px;
+  padding-top: 22px;
+  height: 190px;
+  margin: auto;
+  border-top: 1px solid #ededed;
+  background-image: url(https://img.alicdn.com/tps/TB1p.cIPXXXXXboXFXXXXXXXXXX-68-25.png);
+  background-position: 12px bottom;
+  background-repeat: no-repeat;
+  &:after, &:before {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+  dl {
+    padding-left: 15px;
+    width: 200px;
+    float: left;
+    dt {
+      color: #646464;
+      font-size: 16px;
+      font-weight: 700;
+      height: 30px;
+      line-height: 30px;
+      text-align: left;
     }
+    dd a {
+      width: 100px;
+      overflow: hidden;
+      text-align: left;
+      height: 20px;
+      line-height: 20px;
+      color: #8b8b8b;
+      display: block;
+      font-size: 12px;
+    }
+  }
+  #mobile {
+    width: 110px;
+    a {
+      height: 150px;
+    }
+  }
+}
+
+#tmall-copyright {
+  border-top: 2px solid #c40000;
+  background: #000;
+  text-align: left;
+  min-height: 177px;
+  .footer-info, .footer-otherlink{
+    line-height: 25px;
+    margin: 0 auto;
+    width: 990px;
+    padding: 5px 0;
+    color: #fff;
+    a {
+      color: #fff;
+      font-size: 12px;
+      margin-left: 3px;
+    }
+  }
+  
+  .footer-otherlink a {
+    padding-right: 5px;
+    border-right: 1.5px solid #ccc;
+    &:nth-last-child(1){
+      border-right-width: 0;
+    }
+  }
+}
 
 //刷新翻转卡片动画
 @keyframes trans {
