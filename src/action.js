@@ -19,6 +19,8 @@ window.onload = function() {
   initBanner()
   liveHover()
   window.onscroll = debounce(showTopSearchBar,500)
+
+  changePlaceholder()
 }
 
 /**
@@ -356,4 +358,36 @@ function brandFresh() {
     }
   },50)
 
+}
+
+/**
+ * SearchBar有内容时自动隐藏labels
+ */
+function changePlaceholder(element) {
+  const topSearchBar = document.getElementById('sp'),
+        hiddenSearchBar = document.getElementById('cmq')
+
+  topSearchBar.addEventListener('input',function() {
+    initListener(this)
+  })
+  // 兼容IE8及以下版本
+  topSearchBar.addEventListener('propertychange', function() {
+    initListener(this)
+  })
+
+  hiddenSearchBar.addEventListener('input',function() {
+    initListener(this)
+  })
+  // 兼容IE8及以下版本
+  hiddenSearchBar.addEventListener('propertychange', function() {
+    initListener(this)
+  })
+
+  function initListener(element) {
+    if(element.value === '') {
+        element.labels[0].style.display = 'block'
+        return
+      }
+    element.labels[0].style.display = 'none'
+  }
 }
