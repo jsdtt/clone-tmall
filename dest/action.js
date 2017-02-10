@@ -3,7 +3,7 @@
 // var Layzr = require('layzr.js') 
 
 var instance = Layzr();
-
+var lazyLoadDataIndex = 0;
 // start it up, when the DOM is ready
 
 document.addEventListener('DOMContentLoaded', function (event) {
@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 });
 
 window.onload = function () {
+
   showPanel();
   showNormalNvaPannel();
 
@@ -21,6 +22,7 @@ window.onload = function () {
   window.onscroll = debounce(showTopSearchBar, 500);
 
   changePlaceholder();
+  // loadOtherWonderInfo()
 };
 
 /**
@@ -46,6 +48,7 @@ function debounce(fn, delay) {
 function showTopSearchBar() {
   var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
   var searchBars = document.getElementsByName('searchBar');
+
   if (scrollTop >= 600) {
     for (var i = 0; i < searchBars.length; i++) {
       if (!/\bshow\b/.test(searchBars[i].className)) {
@@ -58,6 +61,36 @@ function showTopSearchBar() {
       searchBars[i].className = searchBars[i].className.replace(/\bshow\b/, '');
     }
   }
+  var requireData = [{
+    "_id": "589d5902817ab76fe8d58cd5",
+    "index": 0,
+    "picture": "https://img.alicdn.com/bao/uploaded/i4/TB19GGNOFXXXXcvXXXXXXXXXXXX_!!0-item_pic.jpg_400x400q60.jpg",
+    "desc": "THE BEAST/野兽派 金边水晶玻璃杯 简约精致杯子",
+    "balance": 200,
+    "decimal": 71
+  }, {
+    "_id": "589d5902817ab76fe8d58cd5",
+    "index": 0,
+    "picture": "https://img.alicdn.com/bao/uploaded/i2/TB1lVijKpXXXXbGaXXXXXXXXXXX_!!0-item_pic.jpg_b.jpg",
+    "desc": "THE BEAST/野兽派 金边水晶玻璃杯 简约精致杯子",
+    "balance": 200,
+    "decimal": 71
+  }, {
+    "_id": "589d5902817ab76fe8d58cd5",
+    "index": 0,
+    "picture": "https://img.alicdn.com/bao/uploaded/i2/TB1WLrPJVXXXXcMXXXXXXXXXXXX_!!0-item_pic.jpg_b.jpg",
+    "desc": "THE BEAST/野兽派 金边水晶玻璃杯 简约精致杯子",
+    "balance": 200,
+    "decimal": 71
+  }, {
+    "_id": "589d5902817ab76fe8d58cd5",
+    "index": 0,
+    "picture": "https://img.alicdn.com/bao/uploaded/i4/TB1Aka2PXXXXXXoXpXXXXXXXXXX_!!0-item_pic.jpg_b.jpg",
+    "desc": "THE BEAST/野兽派 金边水晶玻璃杯 简约精致杯子",
+    "balance": 200,
+    "decimal": 71
+  }];
+  scrollJudeg(requireData);
 }
 
 /**
@@ -428,4 +461,62 @@ function changePlaceholder(element) {
     }
     element.labels[0].style.display = 'none';
   }
+}
+
+/**
+ * 加载余下猜你喜欢的数据
+ */
+function loadOtherWonderInfo(loadData) {
+  if (!loadData) {
+    return;
+  }
+  var wonderFragment = document.createDocumentFragment(),
+      lineCon = document.createElement('ul');
+
+  for (var i = 0, l = loadData.length; i < l; i++) {
+    var itemCon = document.createElement('li'),
+        cover = document.createElement('a'),
+        pic = document.createElement('span'),
+        info = document.createElement('span'),
+        itemInfo = void 0;
+
+    itemInfo = loadData[i];
+    itemCon.className = 'wonderful-item';
+
+    pic.className = 'item-pic';
+    pic.innerHTML = '<img src="' + itemInfo.picture + '" alt="">';
+
+    info.className = 'item-info';
+    info.innerHTML = '\n      <span class="item-desc">\n        ' + itemInfo.desc + '\n      </span>\n      <span class="item-price">\n          <i class="rmb">\xA5</i>\n          <span class="integer">' + itemInfo.balance + '</span>\n          <span class="decimal">.' + itemInfo.decimal + '</span>\n      </span>\n    ';
+    cover.appendChild(pic);
+    cover.appendChild(info);
+    itemCon.appendChild(cover);
+    wonderFragment.appendChild(itemCon);
+  }
+  //插入之后需要对tm-end做重新定位-- Safari下
+  lineCon.className = 'wonderful-line';
+  lineCon.appendChild(wonderFragment);
+  document.getElementById('wonderful-item-wapper').appendChild(lineCon);
+}
+
+function scrollJudeg(requireData) {
+  var scrollTop = void 0,
+      lastItemLineTop = void 0,
+      windowHeight = void 0,
+      itemlines = void 0;
+  var wonderItems = document.getElementsByClassName('wonderful-item');
+  var itemWidth = wonderItems[0].offsetWidth;
+  var column = Math.floor(document.getElementsByClassName('wonderful-line')[0].offsetWidth / itemWidth);
+
+  itemlines = document.getElementsByClassName('wonderful-line');
+  lastItemLineTop = itemlines[itemlines.length - 1].offsetTop + Math.floor(itemlines[0].offsetHeight / 2);
+  scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+  windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+  if (lastItemLineTop < scrollTop + windowHeight) {
+    var data = requireData;
+    loadOtherWonderInfo(data.slice(lazyLoadDataIndex, column));
+    lazyLoadDataIndex += column + 1;
+  }
+
+  //定义个info数组、当数组全部加载完成后就停止加载
 }
