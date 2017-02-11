@@ -21,26 +21,30 @@ window.onload = function() {
 
   initBanner()
   liveHover()
-  window.onscroll = debounce(showTopSearchBar,500)
-
+  window.addEventListener('scroll', debounce(showTopSearchBar,500,1000))
   changePlaceholder()
-  // loadOtherWonderInfo()
 }
 
 /**
- * 函数防抖
+ * 函数防抖会导致底部wonderful数据加载延迟
+ * 更正采用节流的办法，每mustRun个毫秒后自动执行
  */
-function debounce(fn, delay){
-  let timer = null 
+function debounce(fn, delay, mustRun){
+  let timer = null ,
+      startTime = new Date()
 
   return function() {
     let context = this
     let args = arguments
+    let curTime = new Date()
     // 再次触发则重新计时
     clearTimeout(timer)
-    timer = setTimeout(function() {
+    if (curTime - startTime >= mustRun) {
       fn.apply(context, args)
-    }, delay);
+      startTime = curTime
+    } else {
+      timer = setTimeout(fn, delay)
+    }
   }
 }
 
