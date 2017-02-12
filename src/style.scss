@@ -42,7 +42,7 @@ body {
 }
 #site-nav {
   font-family: "Microsoft YaHei",tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 #site-nav {
@@ -65,6 +65,9 @@ body {
 #sn-bd {
   position: relative;
   width: 982px;
+  @media screen and (min-width:1260px) {
+    width: 1230px;
+  };
   margin: auto;
   .sn-container {
     line-height: $sn-height;
@@ -241,6 +244,9 @@ body {
       }
       .menu-bd {
         width: 982px;
+        @media screen and (min-width:1260px) {
+          width: 1198px;
+        };
         // 绝对定位后right为0则右边不动，左边auto自适应
         right: 0;
         left: auto;
@@ -271,6 +277,12 @@ body {
       }
       .site-help {
         width: 210px;
+        @media screen and (min-width:1260px) {
+          float: right !important;
+          width: 128px;
+          
+        }
+        
       }
       .site-brand {
         width: 275px;

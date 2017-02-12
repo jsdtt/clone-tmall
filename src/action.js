@@ -26,7 +26,7 @@ window.onload = function() {
 }
 
 /**
- * 函数防抖会导致底部wonderful数据加载延迟
+ * 滚动防抖会导致底部wonderful数据加载延迟
  * 更正采用节流的办法，每mustRun个毫秒后自动执行
  */
 function debounce(fn, delay, mustRun){
