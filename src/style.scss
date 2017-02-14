@@ -1,6 +1,8 @@
 $min-width: 990px;
 $sn-height: 32px;
 $main-color: #c40000;
+$base-width: 982px;
+$big-width: 1230px;
 
 
 @keyframes big-play-btn-hover {
@@ -64,9 +66,9 @@ body {
 }
 #sn-bd {
   position: relative;
-  width: 982px;
+  width: $base-width;
   @media screen and (min-width:1260px) {
-    width: 1230px;
+    width: $big-width;
   };
   margin: auto;
   .sn-container {
@@ -243,7 +245,7 @@ body {
         margin-right: -20px;
       }
       .menu-bd {
-        width: 982px;
+        width: $base-width;
         @media screen and (min-width:1260px) {
           width: 1198px;
         };
@@ -317,7 +319,10 @@ body {
   z-index: 1000;
   position: relative;
   .headerLayout {
-    width: 982px;
+    width: $base-width;
+    @media screen and (min-width:1260px){
+      width: $big-width;
+    };
     height: 100px;
     margin: 0 auto;
   }
@@ -376,6 +381,9 @@ body {
 }
 #mall-search {
   width: 410px;
+  @media screen and (min-width:1260px){
+    width: 625px;
+  }
   height: 100px;
   padding-top: 38px;
   overflow: hidden;
@@ -406,6 +414,9 @@ body {
     .s-combox-input-wrap {
       input {
         width: 274px;
+        @media screen and (min-width:1260px){
+          width: 489px;
+        }
         height: 36px;
         padding: 5px 3px 5px 5px;
         color: #000;
@@ -489,7 +500,10 @@ body {
   height: 36px;
   line-height: 36px;
   .inner-con1 {
-    width: 982px;
+    width: $base-width;
+    @media screen and (min-width:1260px) {
+      width: $big-width;
+    }
     padding-right: 0;
     margin: 0 auto;
   }
@@ -522,7 +536,10 @@ body {
   height: 500px;
   position: relative;
   .category-inner-con {
-    width: 982px;
+    width: $base-width;
+    @media screen and (min-width: 1260px){
+      width: $big-width;
+    }
     position: relative;
     z-index: 100;
     margin-right: 0;
@@ -745,7 +762,10 @@ body {
         transition: all .5s ease-in-out;
       }
       .main-banner-outcon {
-        width: 982px;
+        width: $base-width;
+        @media screen and (min-width:1260px) {
+          width: $big-width;
+        }
         height: 100%;
         position: relative;
         z-index: 1;
@@ -753,7 +773,10 @@ body {
         margin: 0 auto;
         padding-left: 30px;
         .main-banner-con {
-          width: 982px;
+          width: $base-width;
+          @media screen and (min-width:1260px) {
+            width: $big-width;
+          }
           margin: 0 auto;
           padding-right: 0;
           margin-left: 120px;
@@ -802,7 +825,7 @@ body {
 
 .activity-bg {
   .area-con {
-    width: 982px;
+    width: $base-width;
     padding-top: 30px;
     margin: auto;
     padding-right: 0;
@@ -810,7 +833,10 @@ body {
 }
 // banner下面直播那部分
 .new-hot-brand-con {
-  width: 982px;
+  width: $base-width;
+  @media screen and (min-width:1260px) {
+    width: $big-width;
+  }
   padding-right: 0;
   margin: 30px auto 0;
   position: relative;
@@ -1071,6 +1097,9 @@ body {
     // live右侧品牌列表
     .brand-list {
       width: 488px;
+      @media screen and (min-width:1260px) {
+          width: 732px;
+      }
       background-color: #f5f5f5;
       height: 100%;
       float: right;
@@ -1085,6 +1114,7 @@ body {
         margin-bottom: 1px;
         float: left;
         position: relative;
+        z-index: 0;
         // 只要点击刷新动态添加一个动画的css或类就好了
         // animation: .8s trans forwards;
         &:hover {
@@ -1202,7 +1232,11 @@ body {
 }
 
 .channel-con {
-  width: 982px;
+  width: $base-width;
+  overflow: hidden;
+  @media screen and (min-width:1260px) {
+    width: $big-width;
+  }
   height: 577px;
   margin: 30px auto 0;
   i {
@@ -1216,9 +1250,21 @@ body {
     text-align: center;
     float: left;
     border-bottom: 1px solid transparent;
-    &:last-child {
+    &:nth-last-child(2) {
       margin-right: 0;
     }
+    &:last-child {
+      display: none;
+    }
+    @media screen and (min-width:1260px) {
+    &:nth-last-child(2){
+      margin-right: 10px;
+    }
+    &:last-child{
+      margin-right: 0;
+      display: block;
+    }
+  }
     .column-title {
       height: 36px;
       text-align: center;
@@ -1294,7 +1340,10 @@ body {
   }
   .full-banner {
     overflow: hidden;
-    width: 982px;
+    width: $base-width;
+    @media screen and (min-width:1260px){
+      width: $big-width;
+    }
     height: 90px;
     margin: 10px auto 0 ;
     margin-top: 10px;
@@ -1306,7 +1355,10 @@ body {
 }
 
 .floor-con {
-  width: 982px;
+  width: $base-width;
+  @media screen and (min-width:1260px){
+    width: $big-width;
+  }
   margin: 30px auto 0;
   .floor-line-con {
     width: 100%;
@@ -1440,7 +1492,11 @@ body {
       
     }
     .middle-column-con {
+      overflow: hidden;
         width: 735px;
+        @media screen and (min-width:1260px){
+          width: 984px;
+        }
         height: 440px;
         float: left;
         .grid {
@@ -1495,7 +1551,11 @@ body {
 }
 
 .shop-con {
-  width: 982px;
+  width: $base-width;
+  @media screen and (min-width:1260px){
+    width: $big-width;
+    height: 694px;
+  }
   position: relative;
   margin: 30px auto 0;
   .module-title {
@@ -1525,6 +1585,10 @@ body {
   }
   .big-shop-item {
     width: 468px;
+    @media screen and (min-width:1260px) {
+      width: 590px;
+      height: 324px;
+    }
     height: 282px;
     border: 1px solid #fff;
     float: left;
@@ -1581,12 +1645,18 @@ body {
     }
     .shop-items {
       height: 225px;
+      @media screen and (min-width:1260px) {
+          height: 264px;
+      }
       margin: 10px -7px;
       list-style: none;
       .shop-item {
         padding: 0;
         float: left;
         width: 150px;
+        @media screen and (min-width:1260px) {
+          width: 190px;
+        }
         margin: 0 5px;
         &:hover {
           .poster img {
@@ -1597,6 +1667,10 @@ body {
           width: 150px;
           height: 150px;
           margin-bottom: 10px;
+          @media screen and (min-width:1260px) {
+            width: 190px;
+            height: 190px;
+          }
           img {
             width: 100%;
             height: 100%;
@@ -1628,7 +1702,10 @@ body {
 .wonderful-con {
   
 
-      width: 982px;
+      width: $base-width;
+      @media screen and (min-width:1260px) {
+        width: $big-width;
+      }
       margin: 30px auto 0;
       .wonderful-title {
         height: 43px;
@@ -1670,12 +1747,22 @@ body {
             margin-right: 11px;
             margin-bottom: 7px;
             float: left;
-            &:nth-child(5n) {
-              margin-right: 0;
+            @media screen and (min-width:1260px) {
+              width: 235px;
+              margin-right: 12px;
             }
+            // @media screen and (max-width:1259px) {
+              &:nth-child(5n) {
+                margin-right: 0;
+              }
+            // }
+            
             .item-pic {
               width: 100%;
               height: 190px;
+              @media screen and (min-width:1260px) {
+                height: 230px;
+              }
               display: block;
               overflow: hidden;
               margin: 2px 1px 0;
@@ -1689,6 +1776,9 @@ body {
             a {
               width: 100%;
               height: 280px;
+              @media screen and (min-width:1260px) {
+                height: 315px;
+              }
               display: block;
               background-color: #fff;
               position: relative;
@@ -1764,6 +1854,10 @@ body {
 #tm-ensure {
   background: url(https://img.alicdn.com/tps/i2/T1vYemFC0eXXcnC4Lh-990-100.jpg) no-repeat;
   width: 999px;
+  @media screen and (min-width:1260px){
+    width: 1190px;
+    background: url(https://img.alicdn.com/tps/i1/T1ZjhhFpRkXXX1CdwH-1190-100.jpg) no-repeat;
+  }
   height: 100px;
   margin: 25px auto;
   padding: 0;
@@ -1776,6 +1870,9 @@ body {
 }
 #tmall-desc {
   width: 990px;
+  @media screen and (min-width:1260px) {
+    width: 1190px;
+  }
   padding-top: 22px;
   height: 190px;
   margin: auto;
@@ -1794,6 +1891,10 @@ body {
   dl {
     padding-left: 15px;
     width: 200px;
+    @media screen and (min-width:1260px) {
+      width: 186px;
+      padding-left: 52px;
+    }
     float: left;
     dt {
       color: #646464;
@@ -1831,6 +1932,9 @@ body {
     line-height: 25px;
     margin: 0 auto;
     width: 990px;
+    @media screen and (min-width:1260px) {
+      width: 1190px;
+    }
     padding: 5px 0;
     color: #fff;
     a {
