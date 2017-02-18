@@ -3,6 +3,7 @@ $sn-height: 32px;
 $main-color: #c40000;
 $base-width: 982px;
 $big-width: 1230px;
+$leftHoverColor: #e54077 #427def #6347ed #3bc7b0 #f7a831 #dd2727 #e54077 #3bc7b0 #f7a831  #427def #6347ed #3bc7b0 #f7a831 #dd2727 #e54077 #427def  !default;
 
 
 @keyframes big-play-btn-hover {
@@ -588,13 +589,19 @@ body {
         box-sizing: border-box;
       }
     }
+    // hover的时候会给nva-item 加上这个类
     .nva-item-hover {
       background-color: #fff !important;
       .nav-item-icon, a {
         opacity: 1 !important;
       }
-      a {
-        color: pink !important;
+      
+    }
+    @for $i from 1 through 16 {
+      .nva-item.nav-item-#{$i}.nva-item-hover {
+        a,i {
+          color: nth($leftHoverColor, $i ) !important
+        }
       }
     }
     .nva-item{
@@ -642,6 +649,13 @@ body {
       height: 500px;
       background-color: #fff;
       width: 782px;
+
+      @for $i from 1 through 16 {
+       .pannel-#{$i} .highlight {
+         color: nth($leftHoverColor , $i ) !important;
+       }     
+      }
+
       .hot-word-con {
         float: left;
         margin: 19px 30px;
@@ -692,9 +706,6 @@ body {
             margin-left: 13px;
             color: #666;
             cursor: pointer;
-          }
-          .highlight {
-            color: #e54077!important;
           }
           .seprate {
             margin-bottom: 10.5px;
