@@ -19,7 +19,7 @@ gulp.task('css', function () {
 gulp.task('toes5', function () {
   return gulp.src('./src/*.js')
     .pipe(babel())
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest('./dest'))
     // .pipe(connect.reload())
 })

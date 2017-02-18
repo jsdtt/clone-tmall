@@ -39,3 +39,6 @@ jspm_packages
 1.html
 # Vscode Setting
 .vscode
+
+# Webstorm
+.idea
