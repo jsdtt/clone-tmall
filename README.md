@@ -10,5 +10,8 @@ PC:[DEMO](http://ol094ymex.bkt.clouddn.com/index.html)
 - layzr.js图片懒加载
 - 下拉滚动节流
 
+# Tmall移动端主页
+Vue2.x实现天猫移动端主页进行中...
+
 # 未完待续
 
