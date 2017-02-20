@@ -18,12 +18,15 @@ export default {
   },
   components: {
     MenuPanel
+  },
+  created () {
+    // this.$http.get('').then(response => {
+    //   // this.someData = response.body;
+    //   console.log(response.body)
+    // }, response => {
+    //   console.log('error')
+    // })
   }
-  // data (){
-  //   return {
-
-  //   }
-  // }
 }
 </script>
 <style scoped lang="scss">
