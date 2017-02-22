@@ -17,10 +17,10 @@
           </ul>
         </div>
         <div class='main-con'>
-          <ul class='tab-ul'>
+          <ul class='tab-ul' v-show="!loader">
             <li class='tab-li' v-for='tabList in tabConData'>
               <div class="tab-channel" v-if="tabList.type === 'channel'"><a href="">{{tabList.list[0].name}}></a></div>
-              <div class='tab-list' v-if="tabList.type !== 'channel'">
+              <div class='tab-list' v-else>
                 <h2>{{tabList.name}}</h2>
                 <ul>
                   <li v-for="item in tabList.list">
@@ -33,6 +33,7 @@
               </div>
             </li>
           </ul>
+          <loader v-show="loader"></loader>
         </div>
       </div>
     </div>
@@ -40,6 +41,8 @@
 </template>
 
 <script>
+  import Loader from '../../loading/Loader.vue'
+
   export default {
     name: 'MenuPanel',
     props: {
@@ -56,13 +59,17 @@
         }
       }
     },
+    components: {
+      Loader
+    },
     data () {
       return {
         currentItem: '',
         distance: -9999,
         nvaTopStyle: {
           visibility: 'hidden'
-        }
+        },
+        loader: false
       }
     },
     methods: {
@@ -87,6 +94,11 @@
         }
         if (this.currentItem !== event.target) {
           this.currentItem.className = ''
+          // 2s后隐藏loader
+          this.loader = true
+          window.setTimeout(() => {
+            this.loader = false 
+          }, 2000)
         }
         event.target.className = 'active'
         this.currentItem = event.target
@@ -108,7 +120,7 @@
           return this.tabRsponseData[0]
         }
         // 常规情况下返回 (this.currentItem.attributes[1].value)
-        // 为了少早点数据、就循环利用了
+        // 为了少造点数据、就循环利用了
         return this.tabRsponseData[(this.currentItem.attributes[1].value)%6]
       }
     },
@@ -292,5 +304,11 @@
   line-height: 59px;
   border-bottom: 1px solid #E1E1E1;
   margin-right: -1px;
+}
+
+.loader {
+  left: 20%;
+  top: 44px;
+  right: 8.5%;
 }
 </style>

@@ -2,10 +2,12 @@
   <div class="category-menu">
     <a class="category-trigger" @click="showPannel"></a>
     <menu-panel id="category-con"></menu-panel>
+    <loader v-if="loader"></loader>
   </div>
 </template>
 <script>
 import MenuPanel from './MenuPanel'
+import Loader from '../../loading/Loader'
 
 export default {
   name: 'CategoryMenu',
@@ -17,15 +19,21 @@ export default {
     }
   },
   components: {
-    MenuPanel
+    MenuPanel,
+    Loader
+  },
+  data () {
+    return {
+      loader: true
+    }
   },
   created () {
-    // this.$http.get('').then(response => {
-    //   // this.someData = response.body;
-    //   console.log(response.body)
-    // }, response => {
-    //   console.log('error')
-    // })
+    
+  },
+  mounted () {
+    window.setTimeout(() => {
+      this.loader = false 
+    }, 2000);
   }
 }
 </script>
