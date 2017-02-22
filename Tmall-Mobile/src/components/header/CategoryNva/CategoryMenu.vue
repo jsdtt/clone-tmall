@@ -1,7 +1,7 @@
 <template>
   <div class="category-menu">
     <a class="category-trigger" @click="showPannel"></a>
-    <menu-panel id="category-con"></menu-panel>
+    <menu-panel id="category-con" v-if="categoryMenu"></menu-panel>
     <loader v-if="loader"></loader>
   </div>
 </template>
@@ -14,8 +14,16 @@ export default {
   methods: {
     showPannel: function (event) {
       //  category-con为MenuPanel的ID
-      let pannel = document.getElementById('category-con')
-      pannel.style.transform = 'translate(0,0)'
+      let pannel 
+
+      this.categoryMenu = true
+      if (this.categoryMenu) {
+        console.log('ont')
+        window.setTimeout(() => {
+          pannel = document.getElementById('category-con')
+          pannel.style.transform = 'translate(0,0)'
+        },100)
+      }
     }
   },
   components: {
@@ -24,7 +32,8 @@ export default {
   },
   data () {
     return {
-      loader: true
+      loader: true,
+      categoryMenu: false
     }
   },
   created () {
@@ -40,8 +49,8 @@ export default {
 <style scoped lang="scss">
 .category-menu {
   position: relative;
+  display: inline-block;
   width: auto;
-  background-color: pink;
   .category-trigger {
     color: #fff;
     width: 25px;

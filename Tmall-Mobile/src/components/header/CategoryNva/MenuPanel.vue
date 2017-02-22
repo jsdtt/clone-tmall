@@ -1,43 +1,45 @@
 <template>
+  <transition name="pannel">
   <!--.self 修饰符表示只有点击元素本身才会被触发回调事件-->
-  <div class='menu-pannel' @click.self='callBack($event)'>
-    <p @click.self='callBack($event)'>点击此处返回<span></span></p>
-    <div class='pannel-con'>
-      <div class='tab-header'>
-        <h1>全部分类</h1>
-      </div>
-      <div class='tab-con'>
-        <div class='tab-clone top' :class='{ show: fixedOnTop}' id='J_tabClone' data-index='0'>
-          为您推荐
+    <div class='menu-pannel' @click.self='callBack($event)'>
+      <p @click.self='callBack($event)'>点击此处返回<span></span></p>
+      <div class='pannel-con' :style="{height: contentHeight + 'px'}">
+        <div class='tab-header'>
+          <h1>全部分类</h1>
         </div>
-        <div class='tab-nva' id='J_tabNav'>
-          <ul @click='activeItem($event)'>
-            <li :style='nvaTopStyle' data-index='0'>为您推荐</li>
-            <li v-for='(item, i) in nvaList' :data-index='i+1'>{{item}}</li>
-          </ul>
-        </div>
-        <div class='main-con'>
-          <ul class='tab-ul' v-show="!loader">
-            <li class='tab-li' v-for='tabList in tabConData'>
-              <div class="tab-channel" v-if="tabList.type === 'channel'"><a href="">{{tabList.list[0].name}}></a></div>
-              <div class='tab-list' v-else>
-                <h2>{{tabList.name}}</h2>
-                <ul>
-                  <li v-for="item in tabList.list">
-                    <a href=''>
-                      <div class='tab-img' :class="{'tab-trans-back': !item.name}"><img :src="'https:'+item.pic" alt=''></div>
-                      <p class='tab-desc' v-show="item.name">{{item.name}}</p>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-          <loader v-show="loader"></loader>
+        <div class='tab-con'>
+          <div class='tab-clone top' :class='{ show: fixedOnTop}' id='J_tabClone' data-index='0'>
+            为您推荐
+          </div>
+          <div class='tab-nva' id='J_tabNav'>
+            <ul @click='activeItem($event)'>
+              <li :style='nvaTopStyle' data-index='0'>为您推荐</li>
+              <li v-for='(item, i) in nvaList' :data-index='i+1'>{{item}}</li>
+            </ul>
+          </div>
+          <div class='main-con'>
+            <ul class='tab-ul' v-show="!loader">
+              <li class='tab-li' v-for='tabList in tabConData'>
+                <div class="tab-channel" v-if="tabList.type === 'channel'"><a href="">{{tabList.list[0].name}}></a></div>
+                <div class='tab-list' v-else>
+                  <h2>{{tabList.name}}</h2>
+                  <ul>
+                    <li v-for="item in tabList.list">
+                      <a href=''>
+                        <div class='tab-img' :class="{'tab-trans-back': !item.name}"><img :src="'https:'+item.pic" alt=''></div>
+                        <p class='tab-desc' v-show="item.name">{{item.name}}</p>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+            <loader v-show="loader"></loader>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -69,7 +71,8 @@
         nvaTopStyle: {
           visibility: 'hidden'
         },
-        loader: false
+        loader: false,
+        contentHeight: window.innerHeight
       }
     },
     methods: {
@@ -129,6 +132,9 @@
       let nvaEle = document.querySelector('#J_tabNav')
       // 左侧nva滚动监听
       nvaEle.addEventListener('scroll', () => { this.distance = event.target.scrollTop - this.currentItem.offsetTop })
+    },
+    ready () {
+
     }
   }
 </script>
@@ -139,7 +145,6 @@
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
   z-index: 999;
   transform: translate(-100%, 0);
   transition: all .2s ease-in;
@@ -311,4 +316,5 @@
   top: 44px;
   right: 8.5%;
 }
+
 </style>
