@@ -1,17 +1,23 @@
 <template>
   <div class="tm-mobile-header">
-    <div class="header-content miu-fiex">
+    <div class="header-content mui-flex">
       <tm-menu></tm-menu>
+      <tm-search></tm-search>
+      <my-info></my-info>
     </div>
   </div>
 </template>
 <script>
   import TmMenu from './CategoryNva/CategoryMenu.vue'
+  import TmSearch from './Search/Search.vue'
+  import MyInfo from './MyInfo/MyInfo.vue'
 
   export default {
     name: 'tmall-header',
     components: {
-      TmMenu
+      TmMenu,
+      TmSearch,
+      MyInfo
     }
   }
 </script>
@@ -30,9 +36,28 @@
       transform: translateZ(0); 
     }
 }
-.miu-fiex {
+.mui-flex {
   & *, & {
     box-sizing: border-box;
   }
+}
+.mui-flex {
+    display: -webkit-box!important;
+    display: -webkit-flex!important;
+    display: -ms-flexbox!important;
+    display: flex!important;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    > .cell {
+      flex: 1;
+      width: 0;
+      position: relative;
+      padding: 0 !important;
+      display: block;
+      -webkit-box-flex: 1;
+      max-width: 100%;
+      flex-basis: 0;
+    }
 }
 </style>

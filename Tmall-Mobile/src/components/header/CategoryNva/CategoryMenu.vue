@@ -49,7 +49,6 @@ export default {
 <style scoped lang="scss">
 .category-menu {
   position: relative;
-  display: inline-block;
   width: auto;
   .category-trigger {
     color: #fff;
