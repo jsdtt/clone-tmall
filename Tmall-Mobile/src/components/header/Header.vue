@@ -5,19 +5,48 @@
       <tm-search></tm-search>
       <my-info></my-info>
     </div>
+    <search-box v-if="showBox"></search-box>
   </div>
 </template>
 <script>
   import TmMenu from './CategoryNva/CategoryMenu.vue'
   import TmSearch from './Search/Search.vue'
   import MyInfo from './MyInfo/MyInfo.vue'
+  import SearchBox from './Search/SearchBox.vue'
 
   export default {
     name: 'tmall-header',
     components: {
       TmMenu,
       TmSearch,
-      MyInfo
+      MyInfo,
+      SearchBox
+    },
+    data () {
+      return {
+        showBox: false
+      }
+    },
+    methods: {
+    },
+    mounted () {
+      this.$nextTick( () => {
+        let searchForm = document.querySelector('#J_MobileSearch')
+        let closeSearch 
+
+        searchForm.addEventListener('click', () => {
+          this.showBox = true
+          // 当用户点击搜索框的时候对返回按钮增加事件绑定
+          // 延迟500毫秒、确保DOM已经渲染完成
+          window.setTimeout( () => {
+            closeSearch = document.querySelector('#J_CloseSearchBox')
+            closeSearch.addEventListener('click', () => {
+              this.showBox = false
+            },500)
+          })
+        })
+        
+      })
     }
   }
 </script>

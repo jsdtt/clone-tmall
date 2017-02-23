@@ -2,12 +2,11 @@
   <div class="category-menu">
     <a class="category-trigger" @click="showPannel"></a>
     <menu-panel id="category-con" v-if="categoryMenu"></menu-panel>
-    <loader v-if="loader"></loader>
   </div>
 </template>
 <script>
 import MenuPanel from './MenuPanel'
-import Loader from '../../loading/Loader'
+
 
 export default {
   name: 'CategoryMenu',
@@ -18,7 +17,6 @@ export default {
 
       this.categoryMenu = true
       if (this.categoryMenu) {
-        console.log('ont')
         window.setTimeout(() => {
           pannel = document.getElementById('category-con')
           pannel.style.transform = 'translate(0,0)'
@@ -27,8 +25,7 @@ export default {
     }
   },
   components: {
-    MenuPanel,
-    Loader
+    MenuPanel
   },
   data () {
     return {

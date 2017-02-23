@@ -101,7 +101,7 @@
           this.loader = true
           window.setTimeout(() => {
             this.loader = false 
-          }, 2000)
+          }, 1000)
         }
         event.target.className = 'active'
         this.currentItem = event.target
