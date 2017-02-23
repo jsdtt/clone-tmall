@@ -28,7 +28,7 @@
   @import 'loader-style.css';
 
   .loader-enter-active, .loader-leave-active {
-    transition: opacity .1s
+    transition: opacity .2s
   }
   .loader-enter, .loader-leave-active {
     opacity: 0

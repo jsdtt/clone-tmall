@@ -2,15 +2,28 @@
   <div class="tm-mobile-page">
     <tm-header></tm-header>
     <div class="tm-mobile-content"></div>
+    <loader v-if="loader"></loader>
   </div>
 </template>
 <script>
   import TmHeader from './header/Header.vue'
+  import Loader from './loading/Loader.vue'
 
   export default {
     name: 'tmPage',
     components: {
-      TmHeader
+      TmHeader,
+      Loader
+    },
+    data () {
+      return {
+        loader: true
+      }
+    },
+    mounted () {
+      window.setTimeout(() => {
+        this.loader = false
+      },1000)
     }
   }
 </script>
