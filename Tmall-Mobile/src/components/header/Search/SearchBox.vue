@@ -8,6 +8,23 @@
       </form>
       <button class="close" id="J_CloseSearchBox"></button>
     </div>
+    <div class="sb-content">
+      <div class="s-hqHd-menuitem">
+        <div class="s-mi-hqHd"><i class="sh" ></i><span>热门搜索</span></div>
+        <div class="s-mi-hq"><span class="s-mi-cont-key">针织衫女</span></div>
+        <div class="s-mi-hq"><span class="s-mi-cont-key">外套</span></div>
+        <div class="s-mi-hq"><span class="s-mi-cont-key">四件套</span></div>
+        <div class="s-mi-hq"><span class="s-mi-cont-key">笔记本电脑</span></div>
+        <div class="s-mi-hq"><span class="s-mi-cont-key">文胸</span></div>
+        <div class="s-mi-hq"><span class="s-mi-cont-key">小白鞋</span></div>
+        <div class="s-mi-hq"><span class="s-mi-cont-key">吸尘器</span></div>
+        <div class="s-mi-hq"><span class="s-mi-cont-key">空气净化器</span></div>
+        <div class="s-mi-hq"><span class="s-mi-cont-key">双肩包</span></div>
+        <div class="s-mi-hq"><span class="s-mi-cont-key">牛奶</span></div>
+        <div class="s-mi-hq"><span class="s-mi-cont-key">行车记录仪</span></div>
+        <div class="s-mi-hq"><span class="s-mi-cont-key">洗发水</span></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -133,6 +150,52 @@ export default {
     color: #666;
     padding: 8px;
     border: 0;
+  }
+  .sb-content {
+    background: #FFF;
+    position: absolute;
+    top: 44px;
+    bottom: 0;
+    width: 100%;
+    padding: .6em .6em 0;
+    font-size: 14px;
+    box-sizing: border-box;
+    .s-hqHd-menuitem {
+      padding: 8px;
+      min-height: 60px;
+      overflow: hidden;
+      border: 0;
+      color: #999;
+      .s-mi-hqHd {
+        font-size: 12px;
+        .sh {
+          margin-right: 2px;
+          height: 16px;
+          width: 16px;
+          float: left;
+          background: url('./star.png') no-repeat center center;
+          background-size: contain;
+        }
+        span {
+          float: left;
+          line-height: 18px;
+        }
+        &:after {
+          content: '';
+          clear: both;
+          display: table;
+        }
+      }
+      
+    }
+    .s-mi-hq {
+      float: left;
+      border: solid 1px #999;
+      margin-top: 10px;
+      margin-right: 10px;
+      padding: 1px 5px;
+      border-radius: 2px;
+    }
   }
 }
 </style>
