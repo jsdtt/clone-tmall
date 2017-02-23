@@ -1,9 +1,9 @@
 <template>
   <div class="mobile-search cell">
-    <form action="" id="J_MobileSearch">
+    <form action="" id="J_MobileSearch" >
       <div class="s-combobox">
         <div class="s-combobox-input-wrap">
-          <div class="search-input">搜索商品/店铺</div>
+          <div class="search-input" @click="showSearchBox">搜索商品/店铺</div>
         </div>
       </div>
       <input type="submit" class="search-button">
@@ -12,8 +12,22 @@
 </template>
 
 <script>
+
 export default {
-  name: 'TmSearch'
+  name: 'TmSearch',
+  components: {
+
+  },
+  data () {
+    return {
+      showBox: false
+    }
+  },
+  methods: {
+    showSearchBox () {
+      this.showBox = true
+    }
+  }
 }
 </script>
 
