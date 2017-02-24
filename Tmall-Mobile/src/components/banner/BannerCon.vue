@@ -57,7 +57,7 @@ export default {
         swiper.style.transform = `translate(${-414 * this.bulletItem}px, 0)`
         if (this.bulletItem === this.bannerList.length -1) {
           swiper.style.transform = `translate(${-414 * this.bulletItem}px, 0)`
-          // 再第二轮即将完成的瞬间，讲div拉回到0，0的位置
+          // 再第二轮即将开始的瞬间，将div拉回到0，0的位置
           window.setTimeout(() => {
             swiper.style['transition-duration'] = '0ms'
             swiper.style.transform = `translate(0, 0)`

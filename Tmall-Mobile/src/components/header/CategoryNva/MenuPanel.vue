@@ -89,6 +89,7 @@
        * 切换Item
       **/
       activeItem (event) {
+        // this.fixedOnTop = false
         // 首次点击Nva取消置顶
         if (this.currentItem === '') {
           this.currentItem = event.target
@@ -97,6 +98,7 @@
         }
         if (this.currentItem !== event.target) {
           this.currentItem.className = ''
+          // if ()
           // 2s后隐藏loader
           this.loader = true
           window.setTimeout(() => {
@@ -119,6 +121,8 @@
         return false
       },
       tabConData () {
+        // 每次点击Item会清除顶端样式
+        document.querySelector('#J_tabClone').className = 'tab-clone top'
         if (this.currentItem === '') {
           return this.tabRsponseData[0]
         }
@@ -129,9 +133,11 @@
     },
     // 组件初始化的钩子
     mounted () {
-      let nvaEle = document.querySelector('#J_tabNav')
-      // 左侧nva滚动监听
-      nvaEle.addEventListener('scroll', () => { this.distance = event.target.scrollTop - this.currentItem.offsetTop })
+      this.$nextTick(() => {
+        let nvaEle = document.querySelector('#J_tabNav')
+        // 左侧nva滚动监听
+        nvaEle.addEventListener('scroll', () => { this.distance = event.target.scrollTop - this.currentItem.offsetTop })
+      })
     },
     ready () {
 
