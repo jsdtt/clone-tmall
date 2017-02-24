@@ -98,7 +98,6 @@
         }
         if (this.currentItem !== event.target) {
           this.currentItem.className = ''
-          // if ()
           // 2s后隐藏loader
           this.loader = true
           window.setTimeout(() => {
@@ -122,7 +121,9 @@
       },
       tabConData () {
         // 每次点击Item会清除顶端样式
-        document.querySelector('#J_tabClone').className = 'tab-clone top'
+        if (document.querySelector('#J_tabClone')) {
+          document.querySelector('#J_tabClone').className = 'tab-clone top'
+        }
         if (this.currentItem === '') {
           return this.tabRsponseData[0]
         }

@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import MenuPanel from './MenuPanel'
+import MenuPanel from './MenuPanel.vue'
 
 
 export default {
@@ -30,7 +30,7 @@ export default {
   data () {
     return {
       loader: true,
-      categoryMenu: false
+      categoryMenu: true
     }
   },
   created () {
