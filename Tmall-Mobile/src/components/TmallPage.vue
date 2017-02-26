@@ -3,6 +3,7 @@
     <tm-header></tm-header>
     <div class="tm-mobile-content">
       <banner-con></banner-con>
+      <top-nav-con></top-nav-con>
     </div>
     <loader v-if="loader"></loader>
   </div>
@@ -11,13 +12,15 @@
   import TmHeader from './header/Header.vue'
   import Loader from './loading/Loader.vue'
   import BannerCon from './banner/BannerCon.vue'
+  import TopNavCon from './topNav/TopNavCon.vue'
 
   export default {
     name: 'tmPage',
     components: {
       TmHeader,
       Loader,
-      BannerCon
+      BannerCon,
+      TopNavCon
     },
     data () {
       return {
