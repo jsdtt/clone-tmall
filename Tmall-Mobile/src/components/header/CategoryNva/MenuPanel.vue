@@ -137,7 +137,7 @@
       this.$nextTick(() => {
         let nvaEle = document.querySelector('#J_tabNav')
         // 左侧nva滚动监听
-        nvaEle.addEventListener('scroll', () => { this.distance = event.target.scrollTop - this.currentItem.offsetTop })
+        nvaEle.addEventListener('scroll', (event) => { this.distance = event.target.scrollTop - this.currentItem.offsetTop })
       })
     },
     ready () {

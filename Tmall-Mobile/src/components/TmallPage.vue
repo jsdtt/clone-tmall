@@ -1,7 +1,7 @@
 <template>
   <div class="tm-mobile-page">
-    <tm-header></tm-header>
-    <div class="tm-mobile-content">
+    <tm-header :bgRed = "headerBg"></tm-header>
+    <div class="tm-mobile-content" id="J_MobileCon">
       <banner-con></banner-con>
       <top-nav-con></top-nav-con>
     </div>
@@ -24,13 +24,35 @@
     },
     data () {
       return {
-        loader: true
+        loader: true,
+        touchMoveStartPoint: 0,
+        headerBg: false
       }
     },
     mounted () {
-      window.setTimeout(() => {
-        this.loader = false
-      },1000)
+      this.$nextTick(() => {
+        let mobileCon = document.querySelector('#J_MobileCon')
+        let bannerCon = document.querySelector('#J_topNavCon')
+        // 1秒后隐藏loader
+        window.setTimeout(() => {
+          this.loader = false
+          window.scrollTo(0,0)
+        },500)
+        // 滚动监听
+        mobileCon.addEventListener('touchstart',(event) => {
+          event = event || window.event
+          this.touchMoveStartPoint = event.touches[0].screenY
+        })
+        mobileCon.addEventListener('touchmove', (event) => {
+          // console.log(`client:${event.touches[0].clientY}====screen${event.touches[0].screenY},====page${event.touches[0].pageY}`)
+          if (this.touchMoveStartPoint - event.touches[0].screenY >= bannerCon.clientHeight) {
+            // 只能从顶部拉下来才能隐藏、如果一开始就在中间呢？
+            this.headerBg = true
+          }else {
+            this.headerBg = false
+          }
+        })
+      })
     }
   }
 </script>
@@ -65,4 +87,5 @@
     padding: 0 !important;
   }
 }
+
 </style>

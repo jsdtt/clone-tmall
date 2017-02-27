@@ -1,6 +1,6 @@
 <template>
   <div class="tm-mobile-header">
-    <div class="header-content mui-flex">
+    <div class="header-content mui-flex" :class="{'tmall-bg-red': bgRed }">
       <tm-menu></tm-menu>
       <tm-search></tm-search>
       <my-info></my-info>
@@ -16,6 +16,7 @@
 
   export default {
     name: 'tmall-header',
+    props: ['bgRed'],
     components: {
       TmMenu,
       TmSearch,
@@ -61,8 +62,8 @@
       background: -webkit-linear-gradient(rgba(0,0,0,.7), rgba(0, 0, 0, 0));
       background: -o-linear-gradient(rgba(0,0,0,.7), rgba(0, 0, 0, 0));
       background: linear-gradient(rgba(0,0,0,.7), rgba(0, 0, 0, 0));
-      transition: background-color .2 linear; 
       transform: translateZ(0); 
+      transition: background-color .2s linear;
     }
 }
 .mui-flex {
@@ -88,5 +89,8 @@
       max-width: 100%;
       flex-basis: 0;
     }
+}
+.tmall-bg-red {
+  background: #f32d2d !important;
 }
 </style>
