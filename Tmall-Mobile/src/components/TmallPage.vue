@@ -4,6 +4,7 @@
     <div class="tm-mobile-content" id="J_MobileCon">
       <banner-con></banner-con>
       <top-nav-con></top-nav-con>
+      <hot-point-con></hot-point-con>
     </div>
     <loader v-if="loader"></loader>
   </div>
@@ -13,6 +14,7 @@
   import Loader from './loading/Loader.vue'
   import BannerCon from './banner/BannerCon.vue'
   import TopNavCon from './topNav/TopNavCon.vue'
+  import HotPointCon from './hotPointCon/HotPointCon.vue'
 
   export default {
     name: 'tmPage',
@@ -20,7 +22,8 @@
       TmHeader,
       Loader,
       BannerCon,
-      TopNavCon
+      TopNavCon,
+      HotPointCon
     },
     data () {
       return {

@@ -45,14 +45,13 @@ export default {
   data () {
     return {
       bulletItem: 0,
+      // 设置banner的宽度为屏幕的宽度
       adviceWidth: document.documentElement.clientWidth
     }
   },
   mounted () {
     this.$nextTick(() => {
       let swiper = document.querySelector('#J_SwiperWrapper')
-      // 设置banner的宽度为屏幕的宽度
-
       // 滚动Banner定时器
       window.setInterval(() => {
         this.bulletItem = this.bulletItem + 1 === this.bannerList.length ? 1 : this.bulletItem + 1
