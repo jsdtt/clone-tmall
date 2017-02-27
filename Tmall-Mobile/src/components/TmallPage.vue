@@ -5,6 +5,7 @@
       <banner-con></banner-con>
       <top-nav-con></top-nav-con>
       <hot-point-con></hot-point-con>
+      <calendar-card-con></calendar-card-con>
     </div>
     <loader v-if="loader"></loader>
   </div>
@@ -15,6 +16,7 @@
   import BannerCon from './banner/BannerCon.vue'
   import TopNavCon from './topNav/TopNavCon.vue'
   import HotPointCon from './hotPointCon/HotPointCon.vue'
+  import CalendarCardCon from './calendarCard/CalendarCardCon.vue'
 
   export default {
     name: 'tmPage',
@@ -23,7 +25,8 @@
       Loader,
       BannerCon,
       TopNavCon,
-      HotPointCon
+      HotPointCon,
+      CalendarCardCon
     },
     data () {
       return {
@@ -68,6 +71,7 @@
 }
 .tm-mobile-content {
   height: 1000px;
+  background-color: #f0f0f0;
 }
 .mui-flex {
   display: flex !important;
