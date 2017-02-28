@@ -69,7 +69,7 @@ export default {
       if (this.touchTranslatePx <= 0){
         movePx = this.touchTranslatePx - (this.touchBeginPoint - moveScreen)
       }else {
-        movePx = -(this.touchBeginPoint - moveScreen)
+        movePx = this.touchTranslatePx + (this.touchBeginPoint - moveScreen)
       }
       movePx = movePx > 0 ? 0 : movePx
       moveTarget.style['transform'] = `translate(${movePx}px, 0)`
@@ -77,12 +77,12 @@ export default {
     },
     touchOver (event) {
       let moveTarget = document.querySelector('#J_swiperWrapper')
-
+      this.touchTranslatePx = this.touchFinalTransX
       if (this.touchFinalTransX < -120){
         moveTarget.style['transition-duration'] = '300ms'
         moveTarget.style['transform'] = `translate(-119px, 0)`
         this.touchTranslatePx = -119
-      }
+      }     
     }
   },
   mounted () {
