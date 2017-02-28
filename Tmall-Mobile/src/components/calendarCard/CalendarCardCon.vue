@@ -43,7 +43,8 @@ export default {
           }
         }],
       touchBeginPoint: -999,
-      touchTranslatePx: 999
+      touchTranslatePx: 999,
+      touchFinalTransX: 0
     }
   },
   methods: {
@@ -56,26 +57,32 @@ export default {
           movePx 
       
       moveTarget.style['transition-duration'] = '0ms'
-      if (this.touchTranslatePx < 0){
+      if (!this.touchFinalTransX){
+        // 如果card已经到头了，继续往右拉，直接return
+        if (this.touchBeginPoint < moveScreen) {
+          return 
+        }else {
+          // 如果到头往左拉，就从头开始
+          this.touchTranslatePx = 0
+        }
+      }
+      if (this.touchTranslatePx <= 0){
         movePx = this.touchTranslatePx - (this.touchBeginPoint - moveScreen)
       }else {
         movePx = -(this.touchBeginPoint - moveScreen)
       }
       movePx = movePx > 0 ? 0 : movePx
       moveTarget.style['transform'] = `translate(${movePx}px, 0)`
-      
+      this.touchFinalTransX = movePx
     },
     touchOver (event) {
-      let movePx = this.touchBeginPoint - event.changedTouches[0].screenX,
-          moveTarget = document.querySelector('#J_swiperWrapper')
+      let moveTarget = document.querySelector('#J_swiperWrapper')
 
-      this.touchTranslatePx = -movePx
-      if (movePx > 142){
+      if (this.touchFinalTransX < -120){
         moveTarget.style['transition-duration'] = '300ms'
         moveTarget.style['transform'] = `translate(-119px, 0)`
         this.touchTranslatePx = -119
       }
-      
     }
   },
   mounted () {
