@@ -6,6 +6,8 @@
       <top-nav-con></top-nav-con>
       <hot-point-con></hot-point-con>
       <calendar-card-con></calendar-card-con>
+      <rush-title :cardTitle="'必抢'" :titleColor="'#FF2E2E'" :lineColor="'#F6B7B7'" :imgUrl="'https://img.alicdn.com/tps/i3/TB1z5R9LXXXXXa5XFXXpu65FpXX-22-26.png_2200x2200Q30s0.jpg'"></rush-title>
+      <rush-card-type1></rush-card-type1>
     </div>
     <loader v-if="loader"></loader>
   </div>
@@ -17,6 +19,8 @@
   import TopNavCon from './topNav/TopNavCon.vue'
   import HotPointCon from './hotPointCon/HotPointCon.vue'
   import CalendarCardCon from './calendarCard/CalendarCardCon.vue'
+  import RushTitle from './rushCard/RushCardTitle.vue'
+  import RushCardType1 from './rushCard/RushCard_Type1.vue'
 
   export default {
     name: 'tmPage',
@@ -26,7 +30,9 @@
       BannerCon,
       TopNavCon,
       HotPointCon,
-      CalendarCardCon
+      CalendarCardCon,
+      RushTitle,
+      RushCardType1
     },
     data () {
       return {
@@ -70,7 +76,7 @@
   font-size: 12px;
 }
 .tm-mobile-content {
-  height: 1000px;
+  // height: 1000px;
   background-color: #f0f0f0;
 }
 .mui-flex {

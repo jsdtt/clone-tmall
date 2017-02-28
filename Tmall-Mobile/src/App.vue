@@ -10,9 +10,11 @@ export default {
 </script>
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select:none
 }
 * {
   padding: 0;
@@ -23,12 +25,11 @@ a{
     color: #000;
 }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
   color: #999;
 }
 a,button,input,textarea{
     -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-user-modify:read-write-plaintext-only; 
+    // -webkit-user-modify:read-write-plaintext-only; 
 }
 input[type=number]::-webkit-textfield-decoration-container {
     background-color: transparent;    
