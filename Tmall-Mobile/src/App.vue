@@ -23,10 +23,8 @@ a{
     color: #000;
 }
 body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
   color: #999;
-}
-body {
-    font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
 }
 a,button,input,textarea{
     -webkit-tap-highlight-color: rgba(0,0,0,0);

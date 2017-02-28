@@ -35,7 +35,7 @@ export default {
           }
         },
         {
-          "imgUrl": "https://img.alicdn.com/tps/TB1h_2MPFXXXXXuXpXXXXXXXXXX-528-326.jpg",
+          "imgUrl": "https://img.alicdn.com/tps/TB1GCS_PFXXXXX_apXXXXXXXXXX-528-326.png_2200x2200Q30s0.jpg",
           "pageParam": "scm=1003.2.201512183-3.OTHER_1487490697941_1554056",
           "title": "家装节-同城购会场",
           "style": {
