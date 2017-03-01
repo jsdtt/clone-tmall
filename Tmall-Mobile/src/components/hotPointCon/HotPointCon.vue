@@ -101,13 +101,13 @@ export default {
       window.setInterval(() => {
         this.swiperItem = this.swiperItem + 1 === this.hotPointList.length ? 1 : this.swiperItem + 1
         hotSwiper.style['transition-duration'] = '300ms'
-        hotSwiper.style.transform = `translate(0, -${40 * this.swiperItem}px)`
+        hotSwiper.style.transform = `translate3d(0, -${40 * this.swiperItem}px,0)`
         if (this.swiperItem === this.hotPointList.length -1) {
-          hotSwiper.style.transform = `translate(0, -${40 * this.swiperItem}px)`
+          hotSwiper.style.transform = `translate3d(0, -${40 * this.swiperItem}px,0)`
           // 再第二轮即将开始的瞬间，将div拉回到0，0的位置
           window.setTimeout(() => {
             hotSwiper.style['transition-duration'] = '0ms'
-            hotSwiper.style.transform = `translate(0, 0)`
+            hotSwiper.style.transform = `translate3d(0, 0,0)`
           },259)
         }
       },3000)

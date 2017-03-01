@@ -83,7 +83,7 @@
         if (event.target.nodeName.toUpperCase() === 'P') {
           menu = event.target.parentElement
         }
-        menu.style.transform = 'translate(-100%, 0)'
+        menu.style.transform = 'translate3d(-100%,0,0)'
       },
       /**
        * 切换Item
@@ -153,7 +153,7 @@
   top: 0;
   width: 100%;
   z-index: 999;
-  transform: translate(-100%, 0);
+  transform: translate3d(-100%, 0,0);
   transition: all .2s ease-in;
   background-color: rgba(0, 0, 0, .7);
   & > p {
@@ -222,6 +222,7 @@
         width: 23%;
         height: 100%;
         float: left;
+        -webkit-overflow-scrolling: touch;
         li {
           @extend .general-nva-item;
           &:first-child {
@@ -239,6 +240,7 @@
         float: left;
         overflow-x: hidden;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
         li {
           box-sizing: border-box;
         }

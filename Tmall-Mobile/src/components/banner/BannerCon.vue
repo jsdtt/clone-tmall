@@ -56,13 +56,13 @@ export default {
       window.setInterval(() => {
         this.bulletItem = this.bulletItem + 1 === this.bannerList.length ? 1 : this.bulletItem + 1
         swiper.style['transition-duration'] = '300ms'
-        swiper.style.transform = `translate(${-this.adviceWidth * this.bulletItem}px, 0)`
+        swiper.style.transform = `translate3d(${-this.adviceWidth * this.bulletItem}px, 0,0)`
         if (this.bulletItem === this.bannerList.length -1) {
-          swiper.style.transform = `translate(${-this.adviceWidth * this.bulletItem}px, 0)`
+          swiper.style.transform = `translate3d(${-this.adviceWidth * this.bulletItem}px, 0,0)`
           // 再第二轮即将开始的瞬间，将div拉回到0，0的位置
           window.setTimeout(() => {
             swiper.style['transition-duration'] = '0ms'
-            swiper.style.transform = `translate(0, 0)`
+            swiper.style.transform = `translate3d(0, 0,0)`
           },259)
         }
       },3000)
