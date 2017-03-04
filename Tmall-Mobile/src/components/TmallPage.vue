@@ -8,6 +8,15 @@
       <calendar-card-con></calendar-card-con>
       <rush-title :cardTitle="'必抢'" :titleColor="'#FF2E2E'" :lineColor="'#F6B7B7'" :imgUrl="'https://img.alicdn.com/tps/i3/TB1z5R9LXXXXXa5XFXXpu65FpXX-22-26.png_2200x2200Q30s0.jpg'"></rush-title>
       <rush-card-type1></rush-card-type1>
+      <rush-title :cardTitle="'潮流酷玩'" :titleColor="'#4A84E2'" :lineColor="'#BECFEC'" :imgUrl="'https://img.alicdn.com/tps/i3/TB1jreQLpXXXXaxXpXXdNLcGpXX-36-42.png_760x760Q30s0.jpg'"></rush-title>
+      <rush-card-type2 :cons="type2s"></rush-card-type2>
+      <rush-title :cardTitle="'品牌特卖'" :titleColor="'#FF8000'" :lineColor="'#FFCC99'" :imgUrl="'https://img.alicdn.com/tps/i3/TB1x91TLpXXXXcBXXXXgBrbGpXX-36-36.png_760x760Q30s0.jpg'"></rush-title>
+      <rush-card-type2 :cons="type3s"></rush-card-type2>
+      <rush-title :cardTitle="'品牌资讯'" :titleColor="'#009F8A'" :lineColor="'#B4E1DC'" :imgUrl="'https://img.alicdn.com/tps/i4/TB1vBu1LpXXXXXtXXXXuv2kGFXX-39-39.png_760x760Q30s0.jpg'"></rush-title>
+      <rush-card-type2 :cons="type4s"></rush-card-type2>
+      <rush-card-type2 :cons="insertBanner"></rush-card-type2>
+      <rush-title :cardTitle="'国际海淘'" :titleColor="'#8828DD'" :lineColor="'#CAB9D9'" :imgUrl="'https://img.alicdn.com/tps/i3/TB1h7mwLpXXXXb9XVXX8zTyHXXX-48-33.png_760x760Q30s0.jpg'"></rush-title>
+      <rush-card-type2 :cons="type5s"></rush-card-type2>
     </div>
     <loader v-if="loader"></loader>
   </div>
@@ -21,6 +30,7 @@
   import CalendarCardCon from './calendarCard/CalendarCardCon.vue'
   import RushTitle from './rushCard/RushCardTitle.vue'
   import RushCardType1 from './rushCard/RushCard_Type1.vue'
+  import RushCardType2 from './rushCard/RushCard_Type2.vue'
 
   export default {
     name: 'tmPage',
@@ -32,13 +42,34 @@
       HotPointCon,
       CalendarCardCon,
       RushTitle,
-      RushCardType1
+      RushCardType1,
+      RushCardType2
     },
     data () {
       return {
         loader: true,
         touchMoveStartPoint: 0,
-        headerBg: false
+        headerBg: false,
+        type2s: [
+          'https://img.alicdn.com/tps/i1/TB16M4JPVXXXXbTaXXXM0z2PXXX-372-453.jpg_760x760Q30s0.jpg',
+          'https://img.alicdn.com/tps/i1/TB1MhMRPFXXXXacaXXXM0z2PXXX-372-453.jpg_760x760Q30s0.jpg',
+          'https://img.alicdn.com/bao/upload/TB19zEVOXXXXXb0aXXXM0z2PXXX-372-453.jpg_760x760Q30s0.jpg'
+        ],
+        type3s: [
+          'https://img.alicdn.com/tps/i1/TB1PJJfPVXXXXXRXFXXG5FDFpXX-561-330.jpg_760x760Q30s0.jpg',
+          'https://img.alicdn.com/bao/uploaded/TB1rvHGPpXXXXXJXXXXSutbFXXX.jpg_760x760Q30s0.jpg'
+        ],
+        type4s: [
+          'https://img.alicdn.com/tps/i1/TB1p2AAPFXXXXX1aXXXocn9PXXX-372-522.jpg_760x760Q30s0.jpg',
+          'https://img.alicdn.com/bao/uploaded/TB1NMGePVXXXXXSXpXXSutbFXXX.jpg_760x760Q30s0.jpg',
+          'https://img.alicdn.com/tps/i1/TB1yShcPVXXXXX8XXXXocn9PXXX-372-522.jpg_760x760Q30s0.jpg'
+        ],
+        insertBanner: ['https://img.alicdn.com/bao/uploaded/TB1Aio4PpXXXXb4XpXXSutbFXXX.jpg_760x760Q30s0.jpg'],
+        type5s: [
+          'https://img.alicdn.com/tps/i1/1000005020548252428/TB2LF3dgbBkpuFjy1zkXXbSpFXa_!!0-2-jupush.png_760x760Q30s0.jpg',
+          'https://img.alicdn.com/bao/upload/TB1OJswPpXXXXXRXFXXVoDZPXXX-372-441.jpg_760x760Q30s0.jpg',
+          'https://img.alicdn.com/tps/i1/TB1BnhNPVXXXXXvXVXXVoDZPXXX-372-441.jpg_760x760Q30s0.jpg'
+        ]
       }
     },
     mounted () {
